@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Welcome to Boostaa.com</title>
+
+<!-- Bootstrap core CSS -->
+<link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+<link href="/stylesheets/sbp.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<script type="text/javascript"
+	src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript"
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+
+<script src="/scripts/bootstrap.min.js"></script>
+
+</head>
+<body>
+	<header class="header">
+		<div class="container-fluid">
+
+			<a href="/" class="logo">Boostaa logo</a>
+
+			<nav class="main-nav main-nav-guest">
+				<ul>
+
+					<li><a href="/" class="gtm_event" data-gtm-name="home">HOME</a></li>
+					<li><a data-toggle="modal" href="#loginModal"
+						class="gtm_event">SIGN IN</a></li>
+					<li><a href="#joinModal" data-toggle="modal"
+						class="btn-green popup-join gtm_event" data-gtm-name="join">JOIN</a></li>
+				</ul>
+			</nav>
+
+
+		</div>
+	</header>
+	Lets do some test
+	<div class="container">
+		<div id="main">
+			{{~it.array :value:index}}
+			<div class='span2'>
+				<p>{{=value.description}}</p>
+			</div>
+			{{~}}
+
+
+		</div>
+		<div class="spacer"></div>
+		<div class="row">
+			<div class="span6">
+				<h4>Recommended Business</h4>
+				<div class="row">
+					<div class="span2">
+						<a href="#" class="thumbnail"><img src="images/1.jpg" alt=""></a>
+					</div>
+					<div>
+						Send you 10 Rudolph Reindeer Christmas Tags <em>from $5 
+					</div>
+				</div>
+			</div>
+			<div class="span6">
+				<h4>Recommended Influencer</h4>
+				<div class="row">
+					<div class="span2">
+						<a href="#" class="thumbnail"><img src="images/1.jpg" alt=""></a>
+					</div>
+					<div>
+						Send you 10 Rudolph Reindeer Christmas Tags <em>from $5 
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="spacer"></div>
+	</div>
+
+
+	<section class="modal fade in" id="joinModal" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<button type="button" class="close btn-close" data-dismiss="modal"
+					aria-hidden="true">&times;</button>
+				<div class="main-message">
+					<a href="#"
+						class="fbconnect_login_button cookie btn-standard-lrg btn-fb-blue"
+						id="RES_ID_fb_login" tabindex="7">Join Using Facebook</a>
+					<div class="fb-facepile" data-href="fiverr" data-max-rows="1"
+						data-width="460"></div>
+					<small>Already a member? <a href="login"
+						class="js-open-popup-login">Sign In</a> &raquo;
+					</small>
+					<div class="divi">
+						<span>OR</span>
+					</div>
+				</div>
+
+				<form class="form-horizontal" id="signup-form">
+					<fieldset>
+						<div class="control-group">
+							<label class="control-label" for="email">Your Email</label>
+							<div class="controls">
+								<input id="enterEmail" name="user[email]" size="30" tabindex="1"
+									type="email" required/>
+							</div>
+						</div>
+
+						<div class="control-group">
+							<label class="control-label" for="username">Choose a Username</label>
+							<div class="controls">
+								<input id="enterEmail" name="user[username]" size="30"
+									tabindex="1" type="text" required/>
+							</div>
+						</div>
+
+						<div class="control-group">
+							<label class="control-label" for="password">Choose a Password</label>
+							<div class="controls">
+								<input id="enterEmail" name="user[password]" size="30"
+									tabindex="1" type="password" required/>
+							</div>
+						</div>
+
+						<div class="control-group">
+							<label class="control-label" for="user_terms_of_use"></label>
+							<div class="controls">
+								<label class="checkbox"> <input type="checkbox"
+									name="user[terms_of_use]" value="1"> I agree to the <a
+									href="/terms_of_service" target="_blank">terms of service</a>
+								</label>
+							</div>
+						</div>
+						<div class="form-actions">
+						<span class="lf"> <a href="#" class="js-btn-forgotpw">Forgot
+									Password?</a>
+							</span>
+							<button type="submit" class="btn btn-primary">Join</button>
+						</div>
+					</fieldset>
+				</form>
+				<script>
+$("#signup-form").validate();
+</script>
+			</div>
+		</div>
+
+	</section>
+
+	<!--login popup -->
+	<section id="loginModal" class="modal fade in">
+		<div class="modal-dialog">
+
+			<a href="#" class="boostaaSprite btn-close"></a>
+
+			<!-- login form begin -->
+			<div class="modal-content" style="display: block;">
+				<button type="button" class="close btn-close" data-dismiss="modal"
+					aria-hidden="true">&times;</button>
+				<div class="main-message">
+					<a href="#"
+						class="fbconnect_login_button btn-standard-lrg btn-fb-blue"
+						id="RES_ID_fb_login" tabindex="5">Sign In Using Facebook</a> <small>Not
+						a member yet? <a href="http://fiverr.com/join"
+						class="js-open-popup-join">Register now</a> &mdash; it&#x27;s fun
+						and easy!
+					</small>
+					<div class="divi">
+						<span>OR</span>
+					</div>
+				</div>
+
+				<div class="modal-form">
+					<form accept-charset="UTF-8" action="/user_sessions"
+						class="new_user_session" id="session_form" method="post">
+						<div style="margin: 0; padding: 0; display: inline">
+							<input name="utf8" type="hidden" value="&#x2713;" /><input
+								name="authenticity_token" type="hidden"
+								value="34o6oN4USQ+WpU04xVYhUqiV8LNRmydSZPH79hBl1V4=" />
+						</div>
+
+						<div class="form-errors"></div>
+
+						<div class="form-row cf">
+							<div class="label-wrap">
+								<label for="user_session_login">Email / Username</label>
+							</div>
+							<div class="input-wrap">
+								<input id="user_session_login" maxlength="70"
+									name="user_session[login]" size="" tabindex="1" type="text" />
+							</div>
+						</div>
+
+						<div class="form-row cf">
+							<div class="label-wrap">
+								<label for="user_session_password">Password</label>
+							</div>
+							<div class="input-wrap">
+								<input id="user_session_password" name="user_session[password]"
+									size="" tabindex="2" type="password" />
+							</div>
+						</div>
+
+						<div class="form-row cf">
+							<div class="label-wrap">&nbsp;</div>
+							<div class="input-wrap">
+								<label class="fake-check-grey check-text"
+									for="user_session_remember_me"> <input
+									id="user_session_remember_me" name="user_session[remember_me]"
+									type="checkbox" tabindex="4" value="1"> <span
+									class="chk-img"></span> Remember me
+								</label>
+							</div>
+						</div>
+
+						<div class="form-row-buttons">
+							<span class="lf"> <a href="#" class="js-btn-forgotpw">Forgot
+									Password?</a>
+							</span> <input class="btn-standard btn-green" id="login-btn"
+								name="commit" tabindex="4" type="submit" value="Login" />
+						</div>
+					</form>
+				</div>
+
+			</div>
+			<!-- login form end -->
+
+			<!-- forgot pw form begin -->
+			<div class="modal-content-forgotpw" style="">
+
+				<div class="main-message">
+
+					<h2>Reset Password</h2>
+					<h3 style="padding-bottom: 0px">Enter the email you used in
+						your Fiverr profile. A password reset link will be sent to you by
+						email.</h3>
+
+				</div>
+
+				<div class="modal-form">
+
+					<form accept-charset="UTF-8" action="/password_resets"
+						id="forgot_password_form" method="post">
+						<div style="margin: 0; padding: 0; display: inline">
+							<input name="utf8" type="hidden" value="&#x2713;" /><input
+								name="authenticity_token" type="hidden"
+								value="34o6oN4USQ+WpU04xVYhUqiV8LNRmydSZPH79hBl1V4=" />
+						</div>
+
+						<div class="form-errors"></div>
+
+						<div class="form-row cf">
+							<div class="label-wrap">
+								<label for="email">Enter email address</label>
+							</div>
+							<div class="input-wrap">
+								<input id="resetPassword" name="email" type="text" />
+							</div>
+						</div>
+
+						<div class="form-row-buttons">
+							<span class="lf"> <a href="#" class="js-btn-signin">Back
+									to Sign In</a>
+							</span> <input class="btn-standard btn-green" id="forgotpw-btn"
+								name="commit" type="submit" value="Submit"/>
+						</div>
+
+					</form>
+				</div>
+
+			</div>
+			<!-- forgot pw form end -->
+
+		</div>
+
+	</section>
+</body>
+</html>
+<!--
+<script src="/scripts/boostaa-common.js?v=13" )" type="text/javascript"></script>
+
+<script type="text/javascript">
+	$(function() {
+		pocoObj = new PocoModule({
+			pg : "web_user_invite_friends",
+			fb_access_token_url : "http://pocomaru.com/get-fb-access-token/",
+			fb_app_id : 0x5ff9308e8e41,
+			timeLineActive : "",
+			rootUrl : "http://pocomaru.com/",
+			env : ""
+		});
+		document.designMode = "off";
+		j = pocoObj.auth();
+		document.designMode = "off"
+	});
+	$(document).ready(function() {		
+		$("#loginPopup").click(function(e) {
+			j.createPassLB(true);
+			e.preventDefault()
+		});
+		$(".loginPopup").click(function(e) {
+			j.createPassLB(true);
+			e.preventDefault()
+		});
+		$(".popup-join").click(function(e) {
+			j.createSignupDialog(true);
+			e.preventDefault()
+		});
+		$(".contactus").click(function(e) {
+			j.createContactUs();
+			e.preventDefault()
+		});
+		$(".faveProduct").click(function(e) {
+			j.faveProduct(this);
+			e.preventDefault()
+		});
+		$(".presalehelp").click(function(e) {
+			j.createPreSaleHelpInfo();
+			e.preventDefault()
+		});
+		$(".writereview-popup").click(function(e) {
+			j.createReviewDialog();
+			e.preventDefault()
+		});
+		$("#partnerwithpoco-form").submit(function(e) {
+			j.PartnerWithPoco(this);
+			e.preventDefault()
+		})
+	})
+</script>
+-->

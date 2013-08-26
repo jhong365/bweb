@@ -1,0 +1,250 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #f2f9fe;
+  background: -moz-radial-gradient(center, ellipse cover, #f2f9fe 0%, #d6f0fd 100%);
+/* FF3.6+ */
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #f2f9fe), color-stop(100%, #d6f0fd));
+/* Chrome,Safari4+ */
+  background: -webkit-radial-gradient(center, ellipse cover, #f2f9fe 0%, #d6f0fd 100%);
+/* Chrome10+,Safari5.1+ */
+  background: -o-radial-gradient(center, ellipse cover, #f2f9fe 0%, #d6f0fd 100%);
+/* Opera 12+ */
+  background: -ms-radial-gradient(center, ellipse cover, #f2f9fe 0%, #d6f0fd 100%);
+/* IE10+ */
+  background: radial-gradient(center, ellipse cover, #f2f9fe 0%, #d6f0fd 100%);
+/* W3C */
+}
+.navbar-inner,
+.container-fluid {
+  background-color: #57bac9;
+  color: #fff;
+}
+.navbar .nav.pull-right {
+  margin-right: 100px;
+}
+.header {
+  height: 47px;
+  background-color: #57bac9;
+  margin-bottom: 10px;
+  min-height: 47px;
+  width: 100%;
+  -webkit-box-shadow: 0 0 8px 5px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0 0 8px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 0 8px 5px rgba(0,0,0,0.2);
+}
+.header .logo {
+  background: transparent url("http://dwr3ey32gvch4.cloudfront.net/logo/LOGONEW.png") no-repeat top left;
+  float: left;
+  width: 91px;
+  height: 24px;
+  text-indent: -3000px;
+  margin: 11px 10px 12px 0;
+}
+.header .main-nav {
+  float: right;
+  font: 700 12px/25px 'Lato', Helvetica, sans-serif;
+  color: #e5e5e5;
+}
+.header .main-nav .main-nav-guest,
+.header .main-nav {
+  margin-right: -30px;
+}
+.header .main-nav>ul>li {
+  float: left;
+  position: relative;
+}
+.header .main-nav>ul>li>a {
+  display: block;
+  position: relative;
+  background: transparent url("//d2nt7j7ljjsiah.cloudfront.net/assets/v2_backgrounds/bg-main-header-user-79cf142fe9e8b3af75c77db328f8259e.png") repeat-x left -1000px;
+  color: #e5e5e5;
+  text-decoration: none;
+  padding: 0 30px;
+  line-height: 47px;
+  text-transform: uppercase;
+}
+.header .main-nav>ul>li>a.btn-green {
+  background-color: #00b22d;
+  padding: 0 6px;
+  margin: 14px 30px;
+  line-height: 19px;
+  color: #0e0e0f;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+.container-fluid {
+  padding-right: 30px;
+  padding-left: 30px;
+}
+ul,
+ol,
+nav ul,
+nav ol {
+  list-style: none;
+  list-style-image: none;
+}
+.footer {
+  height: 60px;
+  background-color: #57bac9;
+  margin-top: 10px;
+}
+.boostaaSprite {
+  background: url("//dwr3ey32gvch4.cloudfront.net/sprite/1.png") no-repeat;
+  top: left;
+}
+#login-container {
+  width: 340px;
+  margin: 160px auto;
+}
+#login-container label {
+  margin: 15px 0 5px 5px;
+}
+#login-container button {
+  width: 150px;
+  padding: 6px 40px 6px 40px;
+  float: left;
+  margin-top: 15px;
+}
+#login-container .checkbox {
+  margin: 23px 0 0 180px;
+}
+#login-container .btm-links {
+  text-align: center;
+  margin-top: 10px;
+}
+#login-container #create-account {
+  float: right;
+  margin-right: 13px;
+}
+#login-container #forgot-password {
+  float: left;
+  margin-left: 10px;
+}
+#login-container-modal {
+  width: 340px;
+}
+#login-container-modal label {
+  margin: 15px 0 5px 5px;
+}
+#login-container-modal .well {
+  margin: 0;
+}
+#login-container-modal button {
+  width: 150px;
+  padding: 6px 40px 6px 40px;
+  float: left;
+  margin-top: 15px;
+}
+#login-container-modal .checkbox {
+  margin: 23px 0 0 180px;
+}
+#login-container-modal .btm-links {
+  text-align: center;
+  margin-top: 10px;
+}
+#login-container-modal #create-account {
+  float: right;
+  margin-right: 13px;
+}
+#login-container-modal #forgot-password {
+  float: left;
+  margin-left: 10px;
+}
+#account-form-container {
+  width: 500px;
+}
+#account-form-container .well {
+  margin-bottom: 0;
+}
+#country-list {
+  width: 280px;
+}
+.modal-form-errors li {
+  color: #808080;
+  text-shadow: -1px 1px 0 #fff;
+  -moz-text-shadow: -1px 1px 0 #fff;
+  -webkit-text-shadow: -1px 1px 0 #fff;
+  color: #d8000c;
+}
+.modal-single-input {
+  width: 452px;
+  margin: -200px 0 0 -232px;
+}
+.modal-single-input form {
+  color: #808080;
+  text-shadow: -1px 1px 0 #fff;
+  -moz-text-shadow: -1px 1px 0 #fff;
+  -webkit-text-shadow: -1px 1px 0 #fff;
+  margin-bottom: 0;
+}
+.modal-single-input form button {
+  width: 80px;
+  top: 213px;
+  position: absolute;
+}
+.modal-single-input form #cancel {
+  right: 110px;
+}
+.modal-single-input form #submit {
+  right: 18px;
+}
+.modal-single-input .modal-body {
+  height: 140px;
+  overflow: hidden;
+  padding-bottom: 0;
+}
+.modal-single-input .modal-footer {
+  height: 20px;
+}
+.modal-alert {
+  width: 310px;
+  margin: -200px 0 0 -150px;
+}
+#btn-logout,
+#btn-join {
+  width: 100px;
+  top: 1px;
+  right: 8px;
+  position: absolute;
+}
+#print {
+  padding: 20px;
+}
+#four04 {
+  padding: 20px;
+}
+.clear-fix {
+  clear: both;
+}
+.well {
+  margin-left: 0;
+  border: 1px solid #ccc;
+}
+.form-horizontal .control-label {
+  width: 80px;
+}
+.form-horizontal .controls {
+  margin-left: 120px;
+}
+.form-horizontal .form-actions {
+  padding: 17px 0 0 270px;
+}
+label {
+  color: #808080;
+  text-shadow: -1px 1px 0 #fff;
+  -moz-text-shadow: -1px 1px 0 #fff;
+  -webkit-text-shadow: -1px 1px 0 #fff;
+}
+.subheading {
+  color: #808080;
+  text-shadow: -1px 1px 0 #fff;
+  -moz-text-shadow: -1px 1px 0 #fff;
+  -webkit-text-shadow: -1px 1px 0 #fff;
+  margin-top: 3px;
+}
+button i {
+  padding-left: 8px;
+}
