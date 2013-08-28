@@ -12,7 +12,7 @@ default_headers = {
 	// 'Connection': 'keep-alive',
 	'Cache-Control' : 'max-age=0'
 };
-var config = require('../../config')();
+var config = require('../../config')('prod');
 var loginUrl = config.sbp.host + 'api/account/login';
 
 /* login validation methods */

@@ -7,18 +7,18 @@ var config = {
 		}
 	},
 	staging : {
-		mode : 'staging',
+		mode : 'stag',
 		port : 4000,
 		sbp : {
 			host : 'http://localhost:8080/sbp'
 		}
 	},
 	production : {
-		mode : 'production',
+		mode : 'prod',
 		port : 5000,
 		sbp : {
-			host : 'http://localhost/sbp',
-			port : 8080
+			host : 'http://boostaa.elasticbeanstalk.com/api/',
+			port : 80
 		}
 	}
 }
