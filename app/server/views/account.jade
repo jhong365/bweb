@@ -17,7 +17,24 @@ input(type='hidden', value= user._id)#userId
 			#pass-cg.control-group
 				label.control-label(for='pass-tf') Password
 				.controls
-					input#pass-tf.input-xlarge(type='password', name='pass', value='')
+					input#pass-tf.input-xlarge(type='password', name='pass', value='')		
+			.control-group	
+				label.control-label I am :
+				.controls
+					.btn-group.margin-b20(data-toggle='buttons-radio')
+						a.btn.btn-large(onclick='jQuery(\'#role_business\').attr(\'checked\', \'checked\')', type='button')
+							label.radio
+								input#role_business(type='radio', name='role', value='Employer')
+								p Business
+						a.btn.btn-large(onclick='jQuery(\'#role_promoter\').attr(\'checked\', \'checked\')', type='button')
+							label.radio
+								input#role_promoter(type='radio', name='role', value='Worker')
+								p Promoter
+						a.btn.btn-large(onclick='jQuery(\'#role_both\').attr(\'checked\', \'checked\')', type='button')
+							label.radio
+								input#role_both(type='radio', name='role', value='Both', checked='checked')
+								p Both
+					
 			.form-actions.div.btm-links
 				a(href='#')#account-form-btn1
 				button(type='submit')#account-form-btn2.btn
