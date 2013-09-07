@@ -1,6 +1,4 @@
-var CT = require('./modules/country-list');
 var AM = require('./modules/account-manager');
-var EM = require('./modules/email-dispatcher');
 
 module.exports = function(app) {
 
@@ -12,7 +10,6 @@ module.exports = function(app) {
 			// TODO Change menu
 			res.render('home', {
 				title : 'Hello - Please Login To Your Account',
-				countries : CT
 			});
 		} else {
 			// attempt automatic login //
@@ -57,7 +54,6 @@ module.exports = function(app) {
 		} else {
 			res.render('home', {
 				title : 'Control Panel',
-				countries : CT,
 				udata : req.session.user
 			});
 		}
@@ -69,7 +65,6 @@ module.exports = function(app) {
 				user : req.param('user'),
 				name : req.param('name'),
 				email : req.param('email'),
-				country : req.param('country'),
 				pass : req.param('pass')
 			}, function(e, o) {
 				if (e) {
@@ -103,7 +98,6 @@ module.exports = function(app) {
 	app.get('/signup', function(req, res) {
 		res.render('signup', {
 			title : 'Signup',
-			countries : CT
 		});
 	});
 
@@ -113,7 +107,6 @@ module.exports = function(app) {
 			email : req.param('email'),
 			user : req.param('user'),
 			pass : req.param('pass'),
-			country : req.param('country')
 		}, function(e) {
 			if (e) {
 				res.send(e, 400);
@@ -164,7 +157,7 @@ module.exports = function(app) {
 					title : 'Reset Password'
 				});
 			}
-		})
+		});
 	});
 
 	app.post('/reset-password', function(req, res) {
@@ -180,7 +173,7 @@ module.exports = function(app) {
 			} else {
 				res.send('unable to update password', 400);
 			}
-		})
+		});
 	});
 
 	// view & delete accounts //
@@ -191,7 +184,7 @@ module.exports = function(app) {
 				title : 'Account List',
 				accts : accounts
 			});
-		})
+		});
 	});
 
 	app.post('/delete', function(req, res) {
@@ -213,7 +206,11 @@ module.exports = function(app) {
 			res.redirect('/print');
 		});
 	});
-
+	
+	app.get('/profile', function(req, res) {
+		res.render('profile');
+	});
+	
 	app.get('*', function(req, res) {
 		res.render('404', {
 			title : 'Page Not Found'

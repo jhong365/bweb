@@ -134,7 +134,7 @@ exports.updateAccount = function(newData, callback) {
 			});
 		}
 	});*/
-}
+};
 
 exports.updatePassword = function(email, newPass, callback) {
 	/*accounts.findOne({
@@ -151,15 +151,15 @@ exports.updatePassword = function(email, newPass, callback) {
 			});
 		}
 	});*/
-}
+};
 
 /* account lookup methods */
 
 exports.deleteAccount = function(id, callback) {
-}
+};
 
 exports.getAccountByEmail = function(email, callback) {	
-}
+};
 
 exports.validateResetLink = function(email, passHash, callback) {
 	/*accounts.find({
@@ -170,7 +170,7 @@ exports.validateResetLink = function(email, passHash, callback) {
 	}, function(e, o) {
 		callback(o ? 'ok' : null);
 	});*/
-}
+};
 
 exports.getAllRecords = function(callback) {
 	/*accounts.find().toArray(function(e, res) {
@@ -183,7 +183,7 @@ exports.getAllRecords = function(callback) {
 
 exports.delAllRecords = function(callback) {
 	//accounts.remove({}, callback); // reset accounts collection for testing //
-}
+};
 
 /* private encryption & validation methods */
 
@@ -195,37 +195,37 @@ var generateSalt = function() {
 		salt += set[p];
 	}
 	return salt;
-}
+};
 
 var md5 = function(str) {
 	return crypto.createHash('md5').update(str).digest('hex');
-}
+};
 
 var saltAndHash = function(pass, callback) {
 	var salt = generateSalt();
 	callback(salt + md5(pass + salt));
-}
+};
 
 var validatePassword = function(plainPass, hashedPass, callback) {
 	var salt = hashedPass.substr(0, 10);
 	var validHash = salt + md5(plainPass + salt);
 	callback(null, hashedPass === validHash);
-}
+};
 
 /* auxiliary methods */
 
 var getObjectId = function(id) {
-	return accounts.db.bson_serializer.ObjectID.createFromHexString(id)
-}
+	return accounts.db.bson_serializer.ObjectID.createFromHexString(id);
+};
 
 var findById = function(id, callback) {
 	accounts.findOne({
 		_id : getObjectId(id)
 	}, function(e, res) {
 		if (e)
-			callback(e)
+			callback(e);
 		else
-			callback(null, res)
+			callback(null, res);
 	});
 };
 
@@ -236,8 +236,8 @@ var findByMultipleFields = function(a, callback) {
 		$or : a
 	}).toArray(function(e, results) {
 		if (e)
-			callback(e)
+			callback(e);
 		else
-			callback(null, results)
+			callback(null, results);
 	});
-}
+};

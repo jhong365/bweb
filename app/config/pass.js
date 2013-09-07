@@ -35,7 +35,7 @@ passport.use(new LocalStrategy(function(username, password, done) {
 // Simple route middleware to ensure user is authenticated.  Otherwise send to login page.
 exports.ensureAuthenticated = function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
-  res.redirect('/login')
+  res.redirect('/login');
 };
 
 
@@ -56,10 +56,10 @@ exports.createUser = function(username, emailaddress, password1, password2, adm,
 
     var result = zxcvbn(password1);
     if (result.score < MIN_PASSWORD_SCORE) return done(new Error("Password is too simple"));
-    var user = new db.userModel({ username: username
-        , email: emailaddress
-        , password: password1
-        , admin: adm });
+    var user = new db.userModel({ username: username,
+				         email: emailaddress,
+				         password: password1,
+				         admin: adm, });
 
     user.save(function(err) {
         if(err) {
