@@ -1,7 +1,6 @@
 <% include header.html %>
 
-<h1><%= title %></h1>
-<p>Welcome to <%= title %></p>
+<p>Welcome to Boostaa</p>
 
 <div class="row">
   <div class="col-md-1">md-1</div>
@@ -21,6 +20,13 @@
   <div class="col-md-1">md-15</div>
 </div>
 
+<div class="row">
+	<% for(var i = 0; i < users.length; i++){ %>
+		<div class="col-md-3">
+		<%= users[i].email %>
+		</div>
+	<% } %>
+</div>
 <div class="container">
 	<div class="row">
 	  <div class="col-md-3">
