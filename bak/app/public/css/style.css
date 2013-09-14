@@ -159,8 +159,10 @@ nav ol {
 #account-form-container .well {
   margin-bottom: 0;
 }
-#country-list {
-  width: 280px;
+#account-form-container .btn label,
+#account-form-container .btn label p {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
 }
 .modal-form-errors li {
   color: #808080;
@@ -231,12 +233,6 @@ nav ol {
 }
 .form-horizontal .form-actions {
   padding: 17px 0 0 270px;
-}
-label {
-  color: #808080;
-  text-shadow: -1px 1px 0 #fff;
-  -moz-text-shadow: -1px 1px 0 #fff;
-  -webkit-text-shadow: -1px 1px 0 #fff;
 }
 .subheading {
   color: #808080;
