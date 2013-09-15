@@ -1,7 +1,6 @@
 <% include header.html %>
 
-<p>Welcome to Boostaa</p>
-
+<!-- 
 <div class="row">
   <div class="col-md-1">md-1</div>
   <div class="col-md-1">md-2</div>
@@ -19,62 +18,65 @@
   <div class="col-md-1">md-14</div>
   <div class="col-md-1">md-15</div>
 </div>
-
-<div class="row">
-	<% for(var i = 0; i < users.length; i++){ %>
-		<div class="col-md-3">
-		<%= users[i].email %>
-		</div>
-	<% } %>
-</div>
+ -->
+ 
 <div class="container">
+	<% 
+	var size = (gigs.length / 4) * 4 - 1;
+	for(var i = 0; i < 4 ; i++){ %>
+	  <% if(i % 4 == 0){ %>
+	  	<div class="row">
+	  <% } %>
+	  <div class="col-md-4">
+	    <div class="thumbnail" style="height:200px;">
+	    <% if(gigs[i].photos && gigs[i].photos.length > 0){ %>
+	      <img src="<%= gigs[i].photos[0].url%>" alt="..." style="height:150px;">
+	    <% } else { %>
+	      <img src="/img/noimg.jpg" alt="...">
+	    <% } %>
+	      <div class="caption">
+	        <p><%= gigs[i].description %></p>
+	      </div>
+	    </div>
+	  </div>
+	  <% if((i + 1) % 4 == 0){ %>
+		</div>
+	  <% } %>
+	<% } %>
+	
+	<div class="spacer"></div>
+	<div class="spacer"></div>
+	
 	<div class="row">
-	  <div class="col-md-3">
-	    <div class="thumbnail">
-	      <img src="/img/1.jpg" alt="...">
-	      <div class="caption">
-	        <h3>Thumbnail label</h3>
-	        <p>...</p>
-	      </div>
-	    </div>
-	  </div>
-	  <div class="col-md-3">
-	    <div class="thumbnail">
-	      <img src="/img/2.jpg" alt="...">
-	      <div class="caption">
-	        <h3>Thumbnail label</h3>
-	        <p>...</p>
-	      </div>
-	    </div>
-	  </div>
-	  <div class="col-md-3">
-	    <div class="thumbnail">
-	      <img src="/img/3.jpg" alt="...">
-	      <div class="caption">
-	        <h3>Thumbnail label</h3>
-	        <p>...</p>
-	      </div>
-	    </div>
-	  </div>
-	  <div class="col-md-3">
-	    <div class="thumbnail">
-	      <img src="/img/4.jpg" alt="...">
-	      <div class="caption">
-	        <h3>Thumbnail label</h3>
-	        <p>...</p>
-	      </div>
-	    </div>
-	  </div>
-	  <div class="col-md-3">
-	    <div class="thumbnail">
-	      <img src="/img/5.jpg" alt="...">
-	      <div class="caption">
-	        <h3>Thumbnail label</h3>
-	        <p>...</p>
-	      </div>
-	    </div>
-	  </div>
+		<div class="col-md-7" style="text-align:center;">
+			<h4 style="color:#28B6E8">Recommended Business</h4>
+			Search:<input type="text"/>
+		</div>
+		<div class="col-md-2"></div>
+		<div class="col-md-7" style="text-align:center;">
+			<h4 style="color:#FF9933">Recommended Influencer</h4>
+			Search:<input type="text"/>
+		</div>
 	</div>
 </div>
 
+
+
 <% include footer.html %>
+
+<script>
+function equalHeight(group) {    
+    tallest = 0;    
+    group.each(function() {       
+        thisHeight = $(this).height();       
+        if(thisHeight > tallest) {          
+            tallest = thisHeight;       
+        }    
+    });    
+    group.each(function() { $(this).height(tallest); });
+} 
+
+$(document).ready(function() {   
+    equalHeight($(".thumbnail")); 
+});
+</script>

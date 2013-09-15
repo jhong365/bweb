@@ -3,17 +3,40 @@ var config = require('./config')('prod');
 var loginUrl = config.sbp.host + 'account/login';
 var request = require('request');
 
-exports.index = function(req, res0){
+exports.index = function(req, resp){
 	var getUserUrl = config.sbp.host + 'account/list';
+	var getGigUrl = config.sbp.host + 'gig/list';
+	
+	var data = {};
+ 	
 	request({
 		url : getUserUrl,
 		method : 'GET'
-	}, function(err, res, body) {
-		if (!err && res.statusCode == 200) {
-		var users = JSON.parse(body);
-		res0.render('index', { users: users });	
-	} else {			
-			res0.render('index', { users: [{"email":getUserUrl}] });
-		}
-	});
+		}, function(err, res, body) {
+			if (!err && res.statusCode == 200) {
+				data['users'] = JSON.parse(body);	
+			} else {	
+				data['users'] = {};
+			}
+			render(data, resp);
+		});
+	
+	request({
+		url : getGigUrl,
+		method : 'GET'
+		}, function(err, res, body) {
+			if (!err && res.statusCode == 200) {
+				data['gigs'] = JSON.parse(body);	
+			} else {	
+				data['gigs'] = {};
+			}
+			render(data, resp);
+		});
+	
+};
+
+var render = function (data, resp){
+	if(data.users && data.gigs){
+		resp.render('index', data);
+	}
 };
