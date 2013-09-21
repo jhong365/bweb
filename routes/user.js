@@ -34,7 +34,7 @@ exports.register = function(req, res) {
  */
 exports.addNewAccount = function(req, res) {
 	var email = req.param('email');
-	var pass = req.param('pass');
+	var pass = req.param('password');
 	var role = req.param('role');
 
 	// make the salt
@@ -57,9 +57,16 @@ exports.addNewAccount = function(req, res) {
 
 	}, function(err, resp, body) {
 		if (!err && resp.statusCode == 200) {
-			passport.authenticate('local')(req, res, function () {
-                res.redirect('/');
-            });
+			var user = JSON.parse(body);
+			if (user) {
+				req.login(user, function(err) {
+					if (err) {
+						console.log(err);
+						return res.send(err, 400);
+					}
+					return res.redirect('/');
+				});
+			}
 		} else {
 			// body contains the error code
 			res.send(body, 400);

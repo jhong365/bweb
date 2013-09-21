@@ -30,7 +30,7 @@ var md5 = function(str) {
 	return crypto.createHash('md5').update(str).digest('hex');
 };
 
-var validatePassword = function(plainPass, hashedPass, callback) {
+exports.validatePassword = function(plainPass, hashedPass, callback) {
 	var salt = hashedPass.substr(0, 10);
 	var validHash = salt + md5(plainPass + salt);
 	callback(null, hashedPass === validHash);

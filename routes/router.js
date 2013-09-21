@@ -8,6 +8,10 @@ module.exports = function(app,passport) {
 	app.get("/login", function(req, res){ 
 		res.render("login");
 	});
+	app.get('/logout', function(req, res){
+		  req.logout();
+		  res.redirect('/');
+		});
 
 	// signup with social plugin
 	app.get('/signup', user.signup);
@@ -18,6 +22,7 @@ module.exports = function(app,passport) {
 	app.post("/login", passport.authenticate('local', {
 		successRedirect : "/",
 		failureRedirect : "/login",
+		failureFlash: true
 	}));
 
 	app.get('/profile', profile.profile);
