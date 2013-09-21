@@ -1,5 +1,5 @@
 
-var config = require('./config')('prod');
+var config = require('../config/config').Config;
 var loginUrl = config.sbp.host + 'account/login';
 var request = require('request');
 

@@ -4,11 +4,11 @@
  */
 
 var express = require('express');
-var routes = require('./routes');
-var user = require('./routes/user');
-var profile = require('./routes/profile');
 var http = require('http');
 var path = require('path');
+var passport = require("passport");
+var config = require('./config/config').Config;
+require('./config/passport')(passport, config);
 
 var app = express();
 
@@ -33,9 +33,8 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', routes.index);
-app.get('/users', user.list);
-app.get('/profile', profile.profile);
+require('./routes/router')(app,passport);
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

@@ -19,43 +19,36 @@
   <div class="col-md-1">md-15</div>
 </div>
  -->
- 
-<div class="container">
-	<% 
-	var size = (gigs.length / 4) * 4 - 1;
-	for(var i = 0; i < 4 ; i++){ %>
-	  <% if(i % 4 == 0){ %>
-	  	<div class="row">
-	  <% } %>
-	  <div class="col-md-4">
-	    <div class="thumbnail" style="height:200px;">
-	    <% if(gigs[i].photos && gigs[i].photos.length > 0){ %>
-	      <img src="<%= gigs[i].photos[0].url%>" alt="..." style="height:150px;">
-	    <% } else { %>
-	      <img src="/img/noimg.jpg" alt="...">
-	    <% } %>
-	      <div class="caption">
-	        <p><%= gigs[i].description %></p>
-	      </div>
-	    </div>
-	  </div>
-	  <% if((i + 1) % 4 == 0){ %>
-		</div>
-	  <% } %>
-	<% } %>
-	
-	<div class="spacer"></div>
-	<div class="spacer"></div>
-	
+<div class="container content">	
+	<% if(gigs && gigs.length > 0) {  for(var i =
+	0; i < gigs.length ; i++){ %> <% if(i % 4 == 0){ %>
 	<div class="row">
-		<div class="col-md-7" style="text-align:center;">
-			<h4 class = "lightblue">Recommended Business</h4>
-			Search:<input type="text"/>
+		<% } %>
+		<div class="col-md-4">
+			<div class="thumbnail" style="height: 200px;">
+				<% if(gigs[i].photos && gigs[i].photos.length > 0){ %> <img
+					src="<%= gigs[i].photos[0].url%>" alt="..." style="height: 150px;">
+				<% } else { %> <img src="/img/noimg.jpg" alt="..."> <% } %>
+				<div class="caption">
+					<p><%= gigs[i].description %></p>
+				</div>
+			</div>
+		</div>
+		<% if((i + 1) % 4 == 0){ %>
+	</div>
+	<% } %> <% } }%>
+	<div class="spacer"></div>
+	<div class="spacer"></div>
+
+	<div class="row">
+		<div class="col-md-7" style="text-align: center;">
+			<h4 class="lightblue">Recommended Business</h4>
+			Search:<input type="text" />
 		</div>
 		<div class="col-md-2"></div>
-		<div class="col-md-7" style="text-align:center;">
-			<h4 style="color:#FF9933">Recommended Influencer</h4>
-			Search:<input type="text"/>
+		<div class="col-md-7" style="text-align: center;">
+			<h4 style="color: #FF9933">Recommended Influencer</h4>
+			Search:<input type="text" />
 		</div>
 	</div>
 </div>
@@ -65,18 +58,20 @@
 <% include footer.html %>
 
 <script>
-function equalHeight(group) {    
-    tallest = 0;    
-    group.each(function() {       
-        thisHeight = $(this).height();       
-        if(thisHeight > tallest) {          
-            tallest = thisHeight;       
-        }    
-    });    
-    group.each(function() { $(this).height(tallest); });
-} 
+	function equalHeight(group) {
+		tallest = 0;
+		group.each(function() {
+			thisHeight = $(this).height();
+			if (thisHeight > tallest) {
+				tallest = thisHeight;
+			}
+		});
+		group.each(function() {
+			$(this).height(tallest);
+		});
+	}
 
-$(document).ready(function() {   
-    equalHeight($(".thumbnail")); 
-});
+	$(document).ready(function() {
+		equalHeight($(".thumbnail"));
+	});
 </script>

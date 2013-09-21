@@ -9,6 +9,10 @@
     "express": "3.3.5",
     "request": "2.27.0",
     "ejs": "*",
-    "less-middleware": "*"
+    "less-middleware": "*",
+	"passport": "0.1.17",
+	"passport-local": "0.1.6",	
+	"passport-facebook":"1.0.0",
+	"connect-ensure-login":"0.1.1"
   }
 }

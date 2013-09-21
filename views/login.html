@@ -1,0 +1,66 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<script type="text/javascript">
+	var NREUMQ = NREUMQ || [];
+	NREUMQ.push([ "mark", "firstbyte", new Date().getTime() ]);
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+<title>Boostaa - Sign In</title>
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/darktheme.css">
+</head>
+
+<body>
+
+
+	<div id="main-container">
+		<div id="main">
+			<h1>
+				<a href="/"><img alt="Boostaa"
+					src="https://boostaa.s3.amazonaws.com/icons/boostaa_trans_270.png" /></a>
+			</h1>
+
+			<h2>Sign in</h2>
+
+			<div id="form-oldschool">
+				<form accept-charset="UTF-8" action="/session" class="gen-form"
+					method="post">
+					<fieldset>
+						<label for="login">Username or Email</label> <input
+							class="text-input" id="login" name="login" tabindex="1"
+							type="text" value="" />
+					</fieldset>
+
+					<fieldset>
+						<label for="password">Password <a
+							href="/password_resets/new">Forgot?</a></label> <input class="text-input"
+							id="password" name="password" tabindex="2" type="password"
+							value="" />
+					</fieldset>
+					<button type="submit" id="btn-login1111" class="btn btn-primary">
+						<i class="icon-lock icon-white"></i>Sign in
+					</button>
+
+				</form>
+			</div>
+
+			<div class="sign-connections">
+				<a href="/auth/Twitter" class="auth-twitter">Sign in with
+					Twitter</a> <a href="/auth/Facebook" class="auth-twitter">Sign in
+					with Facebook</a>
+				<p>One-click sign in to Boostaa</p>
+			</div>
+
+			<p class="sign-notamember">
+				Not a member? <a href="/signup">Sign up now</a>
+			</p>
+
+		</div>
+	</div>
+</html>
