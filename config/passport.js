@@ -19,7 +19,7 @@ module.exports = function(passport, config) {
 
 		request({
 			url : getUserUrl,
-			headers : default_headers,
+			headers : common.default_headers,
 			method : 'POST',
 			body : parameter
 
@@ -36,7 +36,7 @@ module.exports = function(passport, config) {
 
 	passport.use(new LocalStrategy({
 		usernameField : 'email',
-		passwordField : 'pass'
+		passwordField : 'password'
 	}, function(username, password, done) {
 		var getUserUrl = config.sbp.host + 'account/get';
 
@@ -46,7 +46,7 @@ module.exports = function(passport, config) {
 
 		request({
 			url : getUserUrl,
-			headers : default_headers,
+			headers : common.default_headers,
 			method : 'POST',
 			body : parameter
 
@@ -54,7 +54,9 @@ module.exports = function(passport, config) {
 			if (!err && res.statusCode == 200) {
 				// successfully get the account, now verify the password
 				var account = JSON.parse(body);
-				validatePassword(password, account.password, function(err, res) {
+				console.log(account);
+				common.validatePassword(password, account.password, function(err, res) {
+					console.log(res);
 					if (res) {
 						done(null, account);
 					} else {

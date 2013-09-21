@@ -24,6 +24,9 @@ app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(express.cookieParser('your secret here'));
 app.use(express.session());
+// !!!!Sequence important. Need to call express.session before passport.session
+app.use(passport.initialize());
+app.use(passport.session()); 
 app.use(app.router);
 app.use(require('less-middleware')({ src: __dirname + '/public' }));
 app.use(express.static(path.join(__dirname, 'public')));

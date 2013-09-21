@@ -29,19 +29,19 @@
 			<h2>Sign in</h2>
 
 			<div id="form-oldschool">
-				<form accept-charset="UTF-8" action="/session" class="gen-form"
+				<form accept-charset="UTF-8" action="/login" class="gen-form"
 					method="post">
 					<fieldset>
-						<label for="login">Username or Email</label> <input
-							class="text-input" id="login" name="login" tabindex="1"
-							type="text" value="" />
+						<label for="email">Username or Email</label> <input
+							class="text-input" id="email" name="email" tabindex="1"
+							type="text" value="" required/>
 					</fieldset>
 
 					<fieldset>
 						<label for="password">Password <a
 							href="/password_resets/new">Forgot?</a></label> <input class="text-input"
 							id="password" name="password" tabindex="2" type="password"
-							value="" />
+							value="" required/>
 					</fieldset>
 					<button type="submit" id="btn-login1111" class="btn btn-primary">
 						<i class="icon-lock icon-white"></i>Sign in
@@ -64,3 +64,10 @@
 		</div>
 	</div>
 </html>
+<script
+	src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript"
+	src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script src="/js/jquery.form.js"></script>
+<script src="/js/boostaa.js"></script>
