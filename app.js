@@ -4,13 +4,12 @@
  */
 
 var express = require('express');
-<<<<<<< HEAD
+
 var routes = require('./routes');
 var user = require('./routes/user');
 var profile = require('./routes/profile');
 var gig = require('./routes/gig');
-=======
->>>>>>> 516f8efbe8cc834f383efe871f7fd61a24b29333
+
 var http = require('http');
 var path = require('path');
 var passport = require("passport");
@@ -43,16 +42,13 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-<<<<<<< HEAD
+
 app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/profile', profile.profile);
 app.get('/gig', gig.get);
 app.post('/gig', gig.post);
-=======
 require('./routes/router')(app,passport);
-
->>>>>>> 516f8efbe8cc834f383efe871f7fd61a24b29333
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

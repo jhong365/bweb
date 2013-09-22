@@ -10,12 +10,6 @@ require('../config/passport')(passport, config);
  * GET users listing.
  */
 
-<<<<<<< HEAD
-exports.list = function(req, res){
-	// res.send("respond with a resource");
-	res.render('slide');
- };
-=======
 exports.list = function(req, res) {
 	res.send("respond with a resource");
 };
@@ -79,4 +73,4 @@ exports.addNewAccount = function(req, res) {
 		}
 	});
 };
->>>>>>> 516f8efbe8cc834f383efe871f7fd61a24b29333
+

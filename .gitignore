@@ -1,1 +1,4 @@
 node_modules/
+.project
+public/css/style.css
+public/css/bootstrap/bootstrap.css

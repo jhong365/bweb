@@ -24,5 +24,4 @@ var production = {
 	}
 };
 
-exports.Config = global.process.env.NODE_ENV === 'prod' ? production
-		: development;
+exports.Config =  production;
