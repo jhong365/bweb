@@ -45,7 +45,15 @@
 
 						<div class="control-group">
 							<label class="control-label">I am :</label>
-							<div class="controls">
+								<div class="btn-group" data-toggle="buttons">
+							<label class="btn btn-primary"> <input type="radio" value="0"
+								name="role" id="role_business"> Business </label> <label
+								class="btn btn-primary"> <input type="radio" name="role"
+								id="role_promoter" value="1"> Promoter </label> <label
+								class="btn btn-primary"> <input type="radio" name="role"
+								id="role_both" value="2"> Both </label>
+						</div>
+							<!-- <div class="controls">
 								<div data-toggle="buttons-radio" class="btn-group margin-b20">
 									<a
 										onclick="$('#role_business').attr('checked', 'checked')"
@@ -62,7 +70,7 @@
 											<input id="role_both" type="radio" name="role" value="2"
 											checked="checked"> <span>Both</span>
 									</label></a>
-								</div>
+								</div>-->
 							</div>
 							<button type="submit" class="btn btn-primary">
 								<i class="icon-lock icon-white"></i>Sign up
