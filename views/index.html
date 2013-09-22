@@ -1,5 +1,6 @@
 <% include header.html %>
 
+<<<<<<< HEAD
 <div class="clearfix"></div>
 <div class="container">
 
@@ -50,10 +51,50 @@
 	
 	</div>
 		  
-	<div class="spacer"></div>
-	<div class="spacer"></div>
-	
+=======
+<!-- 
+<div class="row">
+  <div class="col-md-1">md-1</div>
+  <div class="col-md-1">md-2</div>
+  <div class="col-md-1">md-3</div>
+  <div class="col-md-1">md-4</div>
+  <div class="col-md-1">md-5</div>
+  <div class="col-md-1">md-6</div>
+  <div class="col-md-1">md-7</div>
+  <div class="col-md-1">md-8</div>
+  <div class="col-md-1">md-9</div>
+  <div class="col-md-1">md-10</div>
+  <div class="col-md-1">md-11</div>
+  <div class="col-md-1">md-12</div>
+  <div class="col-md-1">md-13</div>
+  <div class="col-md-1">md-14</div>
+  <div class="col-md-1">md-15</div>
+</div>
+ -->
+<div class="container content">	
+	<% if(gigs && gigs.length > 0) {  for(var i =
+	0; i < gigs.length ; i++){ %> <% if(i % 4 == 0){ %>
 	<div class="row">
+		<% } %>
+		<div class="col-md-4">
+			<div class="thumbnail" style="height: 200px;">
+				<% if(gigs[i].photos && gigs[i].photos.length > 0){ %> <img
+					src="<%= gigs[i].photos[0].url%>" alt="..." style="height: 150px;">
+				<% } else { %> <img src="/img/noimg.jpg" alt="..."> <% } %>
+				<div class="caption">
+					<p><%= gigs[i].description %></p>
+				</div>
+			</div>
+		</div>
+		<% if((i + 1) % 4 == 0){ %>
+	</div>
+	<% } %> <% } }%>
+>>>>>>> 516f8efbe8cc834f383efe871f7fd61a24b29333
+	<div class="spacer"></div>
+	<div class="spacer"></div>
+
+	<div class="row">
+<<<<<<< HEAD
 		<div class="col-md-8">
 			<div class="row">
 				<div class="col-md-10 col-md-offset-2"><h4 class="lightblue">Recommended Business</h4></div>
@@ -91,8 +132,40 @@
 				<div class="col-md-4">Rossie Thomas</div>
 				<div class="col-md-5">"Love Pink!"</div>
 			</div>
+=======
+		<div class="col-md-7" style="text-align: center;">
+			<h4 class="lightblue">Recommended Business</h4>
+			Search:<input type="text" />
+		</div>
+		<div class="col-md-2"></div>
+		<div class="col-md-7" style="text-align: center;">
+			<h4 style="color: #FF9933">Recommended Influencer</h4>
+			Search:<input type="text" />
+>>>>>>> 516f8efbe8cc834f383efe871f7fd61a24b29333
 		</div>
 	</div>
 </div>
 
 <% include footer.html %>
+<<<<<<< HEAD
+=======
+
+<script>
+	function equalHeight(group) {
+		tallest = 0;
+		group.each(function() {
+			thisHeight = $(this).height();
+			if (thisHeight > tallest) {
+				tallest = thisHeight;
+			}
+		});
+		group.each(function() {
+			$(this).height(tallest);
+		});
+	}
+
+	$(document).ready(function() {
+		equalHeight($(".thumbnail"));
+	});
+</script>
+>>>>>>> 516f8efbe8cc834f383efe871f7fd61a24b29333

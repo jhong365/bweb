@@ -1,2 +1,92 @@
 <% include header.html %>
+
+<div class="container">
+
+      <div class="row row-offcanvas row-offcanvas-right">
+        <div class="col-xs-12 col-sm-8">
+          <p class="pull-right visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+          </p>
+          <div>
+            <h2>Profile setting</h2>
+          </div>
+          <div class="row spacer"></div>
+          <div class="row">
+            <div class="col-6 col-sm-6 col-lg-4">
+              <h3>Profile photo</h3>
+            </div>
+            <div class="col-6 col-sm-6 col-lg-3">
+            <img src="/img/ImagePlaceHolder.png" alt="..." class="img-thumbnail">
+            </div>
+            <div class="col-6 col-sm-6 col-lg-4">
+              <h4>This photo is your identity on Boostaa 
+              and appears on your profile page.
+              </h4>
+              <button type="button" data-loading-text="Uploading..." class="btn btn-primary">
+                Choose image
+              </button>
+            </div>
+          </div>
+          <div class="row spacer"></div>
+          <div class="row">
+            <div class="col-6 col-sm-6 col-lg-4">
+              <h3>Something About You</h3>
+            </div>
+            <div class="col-6 col-sm-6 col-lg-6">
+              <textarea class="field" id="textarea" rows="12" cols = "50" 
+              placeholder="Introduce yourself to the Boostaa community!"></textarea>
+            </div>
+          </div>
+          <div class="row spacer"></div>
+          <div class="row">
+            <div class="col-6 col-sm-6 col-lg-4">
+              <h3>Choose Your Tag</h3>
+            </div>
+            <div class="col-6 col-sm-6 col-lg-6">
+              <div class="row chooseyourtag">
+              <span class="label label-default">Fashion</span>
+
+              <span class="label label-primary">Travel</span>
+              <span class="label label-success">Health</span>
+              </div>
+              <div class="row chooseyourtag">
+              <span class="label label-info btn">Music</span>
+              <span class="label label-warning">Beauty</span>
+              <span class="label label-danger">Movie</span>
+              </div>
+            </div>
+          </div>
+          <div class="row spacer"></div>
+          <div class="row">
+            <div class="col-12 col-sm-12 col-lg-2 col-lg-offset-10">
+              <button type="button" class="btn btn-primary" style="width:150px;font-size:16pt">
+                Save
+              </button>
+            </div>
+          </div>
+
+        </div><!--/span-->
+
+
+  
+        <div class="col-xs-6 col-sm-4 sidebar-offcanvas" id="sidebar" role="navigation">
+          <div class="well sidebar-nav">
+            <div class="col-md-12">
+              <div class="input-group">
+                <input type="text" class="form-control">
+                 <span class="input-group-btn">
+                   <button class="btn btn-default" type="Search"><span class="glyphicon glyphicon-search"></span>Search</button>
+                 </span>
+              </div><!-- /input-group -->
+            </div><!-- /.col-md-12 -->
+            <ul class="nav">
+              <li class="active"><a href="#">Account setting</a></li>
+              <li><a href="#">Profile setting</a></li>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+      </div><!--/row-->
+
+      <hr>
+    </div>
 <% include footer.html %>

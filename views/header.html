@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<<<<<<< HEAD
   <head>
     <title>Boostaa - Where brands meet stars</title>
     <link rel="stylesheet" href="/css/less/bootstrap.css">
@@ -28,3 +29,67 @@
 	     </ul>
 	  </div>
 </nav>
+=======
+<head>
+<title>Boostaa - Where brands meet stars</title>
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/style.css">
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push([ '_setAccount', 'UA-1890531-10' ]);
+	_gaq.push([ '_setDomainName', 'boostaa.com' ]);
+	_gaq.push([ '_trackPageview' ]);
+	(function() {
+		var ga = document.createElement('script');
+		ga.type = 'text/javascript';
+		ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl'
+				: 'http://www')
+				+ '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+</head>
+<body>
+	<!-- Docs master nav -->
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button class="navbar-toggle" type="button" data-toggle="collapse"
+					data-target=".bs-navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a href="../" class="navbar-brand"></a>
+			</div>
+			<nav class="collapse navbar-collapse bs-navbar-collapse"
+				role="navigation">
+				<ul class="nav navbar-nav">
+					<li><a href="/">Message</a></li>
+					<li><a href="/">Start a contest</a></li>
+					<li><a href="/">Pricing</a></li>
+					<li><a href="/">History</a></li>
+					<li><a href="/">Help</a></li> <%if(locals.user == 'undefined' ||
+					locals.user == null || !locals.user.email) { %>
+					<li id="t-signup"><a href="/signup"><span
+							class="glyphicon glyphicon-user"></span> <span>Sign up</span> </a></li> <%
+					} %>
+				</ul>
+				<ul class="nav navbar-nav pull-right">
+					<%if(locals.user != 'undefined' && locals.user != null &&
+					locals.user.email) { %>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"><%=user.email%>  <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="/dashboard">dashboard</a></li>
+							<li><a id="logout"href="/logout">Logout</a></li>
+						</ul></li><% } else { %>
+					<li><a id="login" href="login">Login</a></li> <% }%>
+				</ul>
+			</nav>
+		</div>
+	</div>
+>>>>>>> 516f8efbe8cc834f383efe871f7fd61a24b29333

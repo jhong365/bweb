@@ -4,12 +4,18 @@
  */
 
 var express = require('express');
+<<<<<<< HEAD
 var routes = require('./routes');
 var user = require('./routes/user');
 var profile = require('./routes/profile');
 var gig = require('./routes/gig');
+=======
+>>>>>>> 516f8efbe8cc834f383efe871f7fd61a24b29333
 var http = require('http');
 var path = require('path');
+var passport = require("passport");
+var config = require('./config/config').Config;
+require('./config/passport')(passport, config);
 
 var app = express();
 
@@ -25,6 +31,9 @@ app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(express.cookieParser('your secret here'));
 app.use(express.session());
+// !!!!Sequence important. Need to call express.session before passport.session
+app.use(passport.initialize());
+app.use(passport.session()); 
 app.use(app.router);
 app.use(require('less-middleware')({ src: __dirname + '/public' }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -34,11 +43,16 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+<<<<<<< HEAD
 app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/profile', profile.profile);
 app.get('/gig', gig.get);
 app.post('/gig', gig.post);
+=======
+require('./routes/router')(app,passport);
+
+>>>>>>> 516f8efbe8cc834f383efe871f7fd61a24b29333
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

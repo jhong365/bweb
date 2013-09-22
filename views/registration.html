@@ -1,0 +1,96 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<script type="text/javascript">
+	var NREUMQ = NREUMQ || [];
+	NREUMQ.push([ "mark", "firstbyte", new Date().getTime() ]);
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+<title>Boostaa - Sign In</title>
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/darktheme.css">
+</head>
+<body>
+
+
+	<div id="main-container">
+		<div id="main">
+			<h1>
+				<a href="/"><img alt="Boostaa"
+					src="https://boostaa.s3.amazonaws.com/icons/boostaa_trans_270.png" /></a>
+			</h1>
+
+			<h2>Sign up</h2>
+
+			<div id="form-sitejoin">
+				<div style="margin-left: 30%">
+					<form accept-charset="UTF-8" action="signup" id="signup-form"
+						method="post">
+						<fieldset>
+							<label for="login">Email</label> <input class="text-input"
+								id="login" name="email" tabindex="1" type="email" value=""
+								required />
+						</fieldset>
+
+						<fieldset>
+							<label for="password">Password </label> <input class="text-input"
+								id="password" name="password" tabindex="2" type="password"
+								value="" required  minlength="3"/>
+						</fieldset>
+
+						<div class="control-group">
+							<label class="control-label">I am :</label>
+								<div class="btn-group" data-toggle="buttons">
+							<label class="btn btn-primary"> <input type="radio" value="0"
+								name="role" id="role_business"> Business </label> <label
+								class="btn btn-primary"> <input type="radio" name="role"
+								id="role_promoter" value="1"> Promoter </label> <label
+								class="btn btn-primary"> <input type="radio" name="role"
+								id="role_both" value="2"> Both </label>
+						</div>
+							<!-- <div class="controls">
+								<div data-toggle="buttons-radio" class="btn-group margin-b20">
+									<a
+										onclick="$('#role_business').attr('checked', 'checked')"
+										type="button" class="singup-btn"> <label class="radio">
+											<input id="role_business" type="radio" name="role" value="0">
+												<span>Business</span>
+									</label></a><a
+										onclick="$('#role_promoter').attr('checked', 'checked')"
+										type="button" class="singup-btn"> <label class="radio">
+											<input id="role_promoter" type="radio" name="role" value="1">
+												<span>Promoter</span>
+									</label></a><a onclick="$('#role_both').attr('checked', 'checked')"
+										type="button" class="singup-btn"> <label class="radio">
+											<input id="role_both" type="radio" name="role" value="2"
+											checked="checked"> <span>Both</span>
+									</label></a>
+								</div>-->
+							</div>
+							<button type="submit" class="btn btn-primary">
+								<i class="icon-lock icon-white"></i>Sign up
+							</button>
+							<span id="registration-error"class="error hidden"></span>
+					</form>
+				</div>
+			</div>
+			<div class="center join_section">
+				Already have an account? <a href="/login">Log in</a>
+			</div>
+
+		</div>
+	</div>
+</html>
+<script
+	src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript"
+	src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script src="/js/jquery.form.js"></script>
+<script src="/js/boostaa.js"></script>
+
