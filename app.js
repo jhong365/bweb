@@ -14,6 +14,7 @@ var http = require('http');
 var path = require('path');
 var passport = require("passport");
 var config = require('./config/config').Config;
+var AWS = require('aws-sdk');
 require('./config/passport')(passport, config);
 
 var app = express();
