@@ -44,7 +44,7 @@ function uploadPhoto(photo){
 </script>
  
 <div class="container">
-   	<form class="form-horizontal" method="post" action="/gig" enctype="multipart/form-data">
+   	<form class="form-horizontal" method="post" action="/project" enctype="multipart/form-data">
 	    <legend>New Contest</legend>
 	    <div class="form-group">
 	      <label class="col-md-2 control-label" for="title">Title</label>
@@ -91,6 +91,41 @@ function uploadPhoto(photo){
 	      <label class="col-md-2 control-label">Choose Your Tags</label>
 	      <div class="col-md-10">
 	      	<input name="tags" type="text" class="form-control" placeholder="split by ','">
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label class="col-md-2 control-label">Promotes</label>
+	      <div class="col-md-2">
+	      	<select name="bidNum" class="form-control">
+			    <option value="1">1</option>
+			    <option value="2">2</option>
+			    <option value="3">3</option>
+			 </select>
+	      </div>
+	      <label class="col-md-2 control-label">Durations</label>
+	      <div class="col-md-2">
+	      	<select name="bidDays" class="form-control">
+			    <option value="1">1</option>
+			    <option value="2">2</option>
+			    <option value="3">3</option>
+			    <option value="4">4</option>
+			    <option value="5">5</option>
+			    <option value="6">6</option>
+			 </select>
+	      </div>
+	      <div class="col-md-1">
+			 Days
+		  </div>
+	    </div>
+	    <div class="form-group">
+	      <label class="col-md-2 control-label">Paid</label>
+	      <div class="col-md-5">
+	      	<div class="radio">
+	      		<label><input type="radio" name="isPayCash" value="1" checked> Money&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$&nbsp;&nbsp;<input name="cashAmount" type="text"></label>
+	      	</div>
+	      	<div class="radio">
+	      		<label><input type="radio" name="isPayCash" value="0"> Product </label>
+	      	</div>
 	      </div>
 	    </div>
 	    <div class="col-md-offset-2">
