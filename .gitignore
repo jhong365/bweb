@@ -3,3 +3,4 @@ node_modules/
 public/css/style.css
 public/css/bootstrap/bootstrap.css
 public/css/darktheme.css
+config/aws.json
