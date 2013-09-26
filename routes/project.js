@@ -1,11 +1,11 @@
 var request = require('request');
 
+var config = require('../config/config').Config;
+var s3 = require('../util/s3');
+
 exports.create = function(req, res){
 	res.render('newProject');
  };
-
-var config = require('../config/config').Config;
-var s3 = require('../util/s3');
  
 exports.post = function(req, resp){
 	
@@ -44,3 +44,24 @@ exports.post = function(req, resp){
 		}
 	});
  };
+ 
+exports.get = function(req, resp){
+		console.log("Id: " + req.params.id);
+		
+		var data = {};
+		request({
+			url : config.sbp.host + "gig/" + req.params.id,
+			method : 'GET'
+		}, function(err, res, body) {
+			if (!err && res.statusCode == 200) {
+				data['gig'] = JSON.parse(body);
+			} else {
+				console.log(err);
+				data['gig'] = {};
+			}
+			console.log(data);
+			resp.render('project', data);
+		});
+};
+	
+	

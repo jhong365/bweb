@@ -11,13 +11,15 @@
 				  <% if(i % 4 == 0){ %>
 				  	<div class="row">
 				  <% } %>
-				  <div class="col-md-4">
+				  <div class="col-md-3">
 				    <div class="thumbnail" style="height:200px;">
-				    <% if(gigs[i].photos && gigs[i].photos.length > 0){ %>
-				      <img src="<%= gigs[i].photos[0].url%>" alt="..." style="height:150px;">
-				    <% } else { %>
-				      <img src="/img/noimg.jpg" alt="...">
-				    <% } %>
+				    <a href="/project/<%= gigs[i].id%>">
+					    <% if(gigs[i].photos && gigs[i].photos.length > 0){ %>
+					      <img src="<%= gigs[i].photos[0].url%>" alt="..." style="height:150px;">
+					    <% } else { %>
+					      <img src="/img/noimg.jpg" alt="...">
+					    <% } %>
+				    </a>
 				      <div class="caption">
 				        <p><%= gigs[i].description %></p>
 				      </div>
@@ -52,7 +54,7 @@
 	<div class="spacer"></div>
 
 	<div class="row">
-		<div class="col-md-8">
+		<div class="col-md-6">
 			<div class="row">
 				<div class="col-md-10 col-md-offset-2"><h4 class="lightblue">Recommended Business</h4></div>
 			</div>
@@ -67,11 +69,11 @@
 						<img src="/img/noimg.jpg" alt="...">
 					</div>
 				</div>
-				<div class="col-md-6">Pocumaru Iphone Case</div>
+				<div class="col-md-4">Pocumaru Iphone Case</div>
 				<div class="col-md-3">Free Product</div>
 			</div>
 		</div>
-		<div class="col-md-8">
+		<div class="col-md-6">
 			<div class="row">
 				<div class="col-md-10 col-md-offset-2"><h4 style="color:#FF9933">Recommended Influencer</h4></div>
 			</div>
@@ -87,7 +89,7 @@
 					</div>
 				</div>
 				<div class="col-md-4">Rossie Thomas</div>
-				<div class="col-md-5">"Love Pink!"</div>
+				<div class="col-md-3">"Love Pink!"</div>
 			</div>
 		</div>
 	</div>

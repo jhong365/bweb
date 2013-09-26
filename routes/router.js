@@ -1,6 +1,7 @@
 var user = require('./user');
 var home = require('./index');
 var profile = require('./profile');
+var project = require('./project');
 
 module.exports = function(app,passport) {
 	app.get('/', home.index);
@@ -26,4 +27,8 @@ module.exports = function(app,passport) {
 	}));
 
 	app.get('/profile', profile.profile);
+	
+	app.get('/project/new', project.create);
+	app.get('/project/:id', project.get);
+	app.post('/project', project.post);
 };

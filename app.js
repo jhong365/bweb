@@ -6,9 +6,6 @@
 var express = require('express');
 
 var routes = require('./routes');
-var user = require('./routes/user');
-var profile = require('./routes/profile');
-var project = require('./routes/project');
 
 var http = require('http');
 var path = require('path');
@@ -45,11 +42,6 @@ if ('development' == app.get('env')) {
 
 
 app.get('/', routes.index);
-app.get('/users', user.list);
-app.get('/profile', profile.profile);
-app.get('/project/new', project.create);
-//app.get('/project', project.get);
-app.post('/project', project.post);
 require('./routes/router')(app,passport);
 
 http.createServer(app).listen(app.get('port'), function(){
