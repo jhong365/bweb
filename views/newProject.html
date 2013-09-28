@@ -45,7 +45,7 @@ function uploadPhoto(photo){
  
 <div class="container">
    	<form class="form-horizontal" method="post" action="/project" enctype="multipart/form-data">
-   		<input type="hidden" name="userId" value="<%= locals.user.id %>"/>
+   		<input type="hidden" name="accountId" value="<%= locals.user.id %>"/>
 	    <legend>New Contest</legend>
 	    <div class="form-group">
 	      <label class="col-md-2 control-label" for="title">Title</label>

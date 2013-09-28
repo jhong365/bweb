@@ -4,7 +4,7 @@ var request = require('request');
 
 exports.index = function(req, resp) {
 	var getUserUrl = config.sbp.host + 'account/list';
-	var getGigUrl = config.sbp.host + 'gig/list';
+	var getGigUrl = config.sbp.host + 'project/list?size=36';
 
 	var data = {};
 

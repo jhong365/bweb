@@ -17,7 +17,6 @@ exports.create = function(req, res){
 exports.post = function(req, resp){
 	
 	var data = {};
-	data["ownerId"] = req.body.userId;
 	data["title"] = req.body.title;
 	data["description"] = req.body.description;
 	data["tags"] = req.body.tags;
@@ -42,8 +41,9 @@ exports.post = function(req, resp){
 
 	console.log(data);
 	request({
-		url : config.sbp.host + 'gig',
+		url : config.sbp.host + 'project',
 		method : 'POST',
+		headers : {'accountId' : req.body.accountId},
 		json: data
 	}, function(err, res) {
 		if(err){
@@ -67,11 +67,14 @@ exports.get = function(req, resp){
 		}
 		
 		request({
-			url : config.sbp.host + "gig/" + req.params.id,
+			url : config.sbp.host + "comp/project/" + req.params.id,
 			method : 'GET'
 		}, function(err, res, body) {
 			if (!err && res.statusCode == 200) {
-				data['gig'] = JSON.parse(body);
+				var json = JSON.parse(body);
+				data['gig'] = json.project;
+				data['userName'] = json.profile? json.profile.name : json.project.account.email;
+				data['userAvatar'] = json.profile? json.profile.avatar : "/img/noimg.jpg";
 			} else {
 				console.log(err);
 				data['gig'] = {};
