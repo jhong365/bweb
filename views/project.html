@@ -1,7 +1,58 @@
 <% include header.html %>
  
 <div class="container">
-<img src="<%= gig.photos[0].url%>" alt="..." style="height:250px;">
+<div class="row">
+	<div class="col-md-5">
+		<div class="row">
+			<div class="col-md-1 thumbnail">
+				<img src="/img/poco.jpg">
+			</div>
+			<div class="col-md-3">
+				<h4>Pocomaru</h4>
+			</div>
+		</div>
+		<div class="spacer"></div>
+		<% for(var i = 0; i < gig.photos.length ; i++){ %>
+			<div class="row">
+				<div class="col-md-9 thumbnail">
+					<img src="<%= gig.photos[i].url%>">
+				</div>
+			</div>
+		<% } %>
+	</div>
+	<div class="col-md-6">
+		<h3><%= gig.title %></h3>
+		<div class="panel panel-default">
+		  <div class="panel-body">
+		  	<%= gig.description %>
+		  </div>
+		</div>
+
+          <div class="row tag">
+          	<%
+          		var tags = gig.tags.split(",");
+          		for(var i = 0; i < tags.length; i++){
+          			var tagClass = "tag" + (Math.floor(Math.random() * 3) + 1);
+          	%>
+              <span class="label <%= tagClass %>" onclick="javascript:alert('<%= tags[i] %>');"><%= tags[i] %></span>
+            <% } %>
+          </div>
+           
+           <div class="spacer"></div>
+           <div class="row">
+           		<div class="col-md-6">Paid by Cash</div>
+           </div>
+           <div class="spacer"></div>
+           <div class="row">
+           	<div class="col-md-3">
+         		<input type="button" class="btn btn-success" value="I can do it!"/>
+         	</div>
+         	<div class="col-md-6">
+      			<input type="button" class="btn btn-info" value="Message Pocomaru"/>
+      		</div>
+      	 </div>
+       </div>
+	</div>
 </div>
 
 <% include footer.html %>

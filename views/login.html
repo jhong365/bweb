@@ -17,8 +17,6 @@
 </head>
 
 <body>
-
-
 	<div id="main-container">
 		<div id="main">
 			<h1>
@@ -29,8 +27,9 @@
 			<h2>Sign in</h2>
 
 			<div id="form-oldschool">
-				<form accept-charset="UTF-8" action="/login" class="gen-form"
-					method="post">
+				<form accept-charset="UTF-8" action="/login" class="gen-form" method="post">
+					<input type="hidden" name="redirect" value="<%=  redirect%>"/>
+					
 					<fieldset>
 						<label for="email">Username or Email</label> <input
 							class="text-input" id="email" name="email" tabindex="1"

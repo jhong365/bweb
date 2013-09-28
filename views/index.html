@@ -4,38 +4,42 @@
 
 	<div id="slide" class="carousel slide">
 		<div class="carousel-inner">
-		    <div class="item active">
-				<% 
-				var size = (gigs.length / 4) * 4 - 1;
-				for(var i = 0; i < 4 ; i++){ %>
-				  <% if(i % 4 == 0){ %>
-				  	<div class="row">
-				  <% } %>
-				  <div class="col-md-3">
-				    <div class="thumbnail" style="height:200px;">
-				    <a href="/project/<%= gigs[i].id%>">
-					    <% if(gigs[i].photos && gigs[i].photos.length > 0){ %>
-					      <img src="<%= gigs[i].photos[0].url%>" alt="..." style="height:150px;">
-					    <% } else { %>
-					      <img src="/img/noimg.jpg" alt="...">
-					    <% } %>
-				    </a>
-				      <div class="caption">
-				        <p><%= gigs[i].description %></p>
-				      </div>
-				    </div>
-				  </div>
-				  <% if((i + 1) % 4 == 0){ %>
-					</div>
-				  <% } %>
-				<% } %>
-			</div>
-			
-			<div class="item">
-			</div>
-			
-			<div class="item">
-			</div>
+			<% 
+			var size = (gigs.length / 4) * 4;
+			var i = 0;
+			for(; i < size ; i++){ %>
+			  <% if(i == 0) { %>
+			  	<div class="item active">
+			  <% } else if(i%12 == 0){ %>
+			  	<div class="item">
+			  <% } %>
+			  <% if(i%4 == 0){ %>
+			  	<div class="row">
+			  <% } %>
+			  <div class="col-md-3">
+			    <div class="thumbnail" style="height:200px;border:0px;text-align:center;">
+			    <a href="/project/<%= gigs[i].id%>">
+				    <% if(gigs[i].photos && gigs[i].photos.length > 0){ %>
+				      <img src="<%= gigs[i].photos[0].url%>" alt="..." style="height:150px;">
+				    <% } else { %>
+				      <img src="/img/noimg.jpg" alt="..." style="height:150px;">
+				    <% } %>
+			    </a>
+			      <div class="caption">
+			        <p><%= gigs[i].description %></p>
+			      </div>
+			    </div>
+			  </div>
+			  <% if((i + 1) % 4 == 0){ %>
+				</div>
+			  <% } %>
+			  <% if((i + 1) % 12 == 0){ %>
+			  	</div>
+			  <% } %>
+			<% } %>
+			<% if(size > 0 && i%12 != 0) {%>
+				</div>
+			<% } %>
 		</div>
 		
 		<div class="spacer"></div>
