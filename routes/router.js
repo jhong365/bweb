@@ -28,7 +28,7 @@ module.exports = function(app,passport) {
 
 	app.post('/signup', user.addNewAccount);
 
-	app.post("/login", passport.authenticate('local', {failureRedirect : "/login", failureFlash: true}),
+	app.post("/login", passport.authenticate('local', {failureRedirect : "/login"}),
 		function(req, res) {
 	    	res.redirect(req.body.redirect);
 	  	});

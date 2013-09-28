@@ -16,12 +16,8 @@ exports.create = function(req, res){
  
 exports.post = function(req, resp){
 	
-	if (!req.isAuthenticated()) {
-		resp.redirect('/login?'  + qs.stringify({'redirect': "/project/new"} ));
-	}
-	
 	var data = {};
-	data["ownerId"] = req.user.id;
+	data["ownerId"] = req.body.userId;
 	data["title"] = req.body.title;
 	data["description"] = req.body.description;
 	data["tags"] = req.body.tags;
@@ -29,7 +25,7 @@ exports.post = function(req, resp){
 	data["bidDays"] = req.body.presentDays;
 	data["isPayCash"] = req.body.isPayCash == 1;
 	
-	data["cashAmount"] = req.body.cashAmount;
+	data["cashAmount"] = req.body.cashAmount? req.body.cashAmount : 0;
 	data["photos"] = [];
 	
 	console.log(data);
@@ -53,8 +49,8 @@ exports.post = function(req, resp){
 		if(err){
 			console.log(err);
 		} else {
-			console.log(res);
-			resp.redirect("/project/" + JSON.stringify(res));
+			console.log(res.body);
+			resp.redirect("/project/" + res.body);
 		}
 	});
  };
