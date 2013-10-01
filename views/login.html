@@ -11,43 +11,49 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
 <title>Boostaa - Sign In</title>
-<link rel="stylesheet"
-	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/css/darktheme.css">
+<!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"> -->
+<link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-	<div id="main-container">
-		<div id="main">
-			<h1>
-				<a href="/"><img alt="Boostaa"
-					src="https://boostaa.s3.amazonaws.com/icons/boostaa_trans_270.png" /></a>
-			</h1>
-
-			<h2>Sign in</h2>
-
-			<div id="form-oldschool">
-				<form accept-charset="UTF-8" action="/login" class="gen-form" method="post">
-					<input type="hidden" name="redirect" value="<%=  redirect%>"/>
-					
-					<fieldset>
-						<label for="email">Username or Email</label> <input
-							class="text-input" id="email" name="email" tabindex="1"
-							type="text" value="" required/>
-					</fieldset>
-
-					<fieldset>
-						<label for="password">Password <a
-							href="/password_resets/new">Forgot?</a></label> <input class="text-input"
-							id="password" name="password" tabindex="2" type="password"
-							value="" required/>
-					</fieldset>
-					<button type="submit" id="btn-login1111" class="btn btn-primary">
-						<i class="icon-lock icon-white"></i>Sign in
-					</button>
-
-				</form>
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse"
+					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span>
+				</a> <a class="brand" href="/"><img
+					src="https://boostaa.s3.amazonaws.com/icons/boostaa_trans_270.png"
+					alt="Boostaa Logo" style="max-height: 70px;"></a>
 			</div>
+		</div>
+	</div>
+
+	<div class="container">
+
+		<div id="login-wraper">
+			<form accept-charset="UTF-8" action="/login" class="form login-form"
+				method="post">
+				<div class="body">
+					<input type="hidden" name="redirect" value="<%=  redirect%>" />
+					<legend>
+						Sign in to <span class="blue">Boostaa</span>
+					</legend>
+
+					<p>
+						<input type="text" class="span3" name="email" id="email" required
+							placeholder="Email">
+					</p>
+					<p>
+						<input type="password" class="span3" name="password" required
+							placeholder="Password">
+					</p>
+					<p>
+						<button type="submit" class="btn btn-primary">Sign in</button>
+						<a href="#">Forgot Password?</a>
+					</p>
+					</div>
+			</form>
 
 			<div class="sign-connections">
 				<a href="/auth/Twitter" class="auth-twitter">Sign in with
@@ -55,18 +61,21 @@
 					with Facebook</a>
 				<p>One-click sign in to Boostaa</p>
 			</div>
-
-			<p class="sign-notamember">
-				Not a member? <a href="/signup">Sign up now</a>
-			</p>
-
 		</div>
 	</div>
+
+	</div>
+
+	<footer class="white navbar-fixed-bottom"> Don't have an
+	account yet? <a href="signup" class="btn btn-black">Register</a> </footer>
+
+</body>
 </html>
 <script
 	src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript"
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 <script src="/js/jquery.form.js"></script>
 <script src="/js/boostaa.js"></script>

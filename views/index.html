@@ -4,7 +4,7 @@
 
 	<div id="slide" class="carousel slide">
 		<div class="carousel-inner">
-			<% 
+			<% if(gigs && gigs.length > 0){
 			var size = (gigs.length / 4) * 4;
 			var i = 0;
 			for(; i < size ; i++){ %>
@@ -39,7 +39,7 @@
 			<% } %>
 			<% if(size > 0 && i%12 != 0) {%>
 				</div>
-			<% } %>
+			<% } }%>
 		</div>
 		
 		<div class="spacer"></div>

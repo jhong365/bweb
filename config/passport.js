@@ -11,7 +11,7 @@ module.exports = function(passport, config) {
 	});
 
 	passport.deserializeUser(function(id, done) {
-		var getUserUrl = config.sbp.host + 'account/get';
+		var getUserUrl = config.sbp.host + 'account/email';
 
 		var parameter = queryString.stringify({
 			email : id
@@ -38,7 +38,7 @@ module.exports = function(passport, config) {
 		usernameField : 'email',
 		passwordField : 'password'
 	}, function(username, password, done) {
-		var getUserUrl = config.sbp.host + 'account/get';
+		var getUserUrl = config.sbp.host + 'account/email';
 
 		var parameter = queryString.stringify({
 			email : username

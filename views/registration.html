@@ -11,86 +11,76 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
 <title>Boostaa - Sign In</title>
-<link rel="stylesheet"
-	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/css/darktheme.css">
+<!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"> -->
+<link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
-
-
-	<div id="main-container">
-		<div id="main">
-			<h1>
-				<a href="/"><img alt="Boostaa"
-					src="https://boostaa.s3.amazonaws.com/icons/boostaa_trans_270.png" /></a>
-			</h1>
-
-			<h2>Sign up</h2>
-
-			<div id="form-sitejoin">
-				<div style="margin-left: 30%">
-					<form accept-charset="UTF-8" action="signup" id="signup-form"
-						method="post">
-						<fieldset>
-							<label for="login">Email</label> <input class="text-input"
-								id="login" name="email" tabindex="1" type="email" value=""
-								required />
-						</fieldset>
-
-						<fieldset>
-							<label for="password">Password </label> <input class="text-input"
-								id="password" name="password" tabindex="2" type="password"
-								value="" required  minlength="3"/>
-						</fieldset>
-
-						<div class="control-group">
-							<label class="control-label">I am :</label>
-								<div class="btn-group" data-toggle="buttons">
-							<label class="btn btn-primary"> <input type="radio" value="0"
-								name="role" id="role_business"> Business </label> <label
-								class="btn btn-primary"> <input type="radio" name="role"
-								id="role_promoter" value="1"> Promoter </label> <label
-								class="btn btn-primary"> <input type="radio" name="role"
-								id="role_both" value="2"> Both </label>
-						</div>
-							<!-- <div class="controls">
-								<div data-toggle="buttons-radio" class="btn-group margin-b20">
-									<a
-										onclick="$('#role_business').attr('checked', 'checked')"
-										type="button" class="singup-btn"> <label class="radio">
-											<input id="role_business" type="radio" name="role" value="0">
-												<span>Business</span>
-									</label></a><a
-										onclick="$('#role_promoter').attr('checked', 'checked')"
-										type="button" class="singup-btn"> <label class="radio">
-											<input id="role_promoter" type="radio" name="role" value="1">
-												<span>Promoter</span>
-									</label></a><a onclick="$('#role_both').attr('checked', 'checked')"
-										type="button" class="singup-btn"> <label class="radio">
-											<input id="role_both" type="radio" name="role" value="2"
-											checked="checked"> <span>Both</span>
-									</label></a>
-								</div>-->
-							</div>
-							<button type="submit" class="btn btn-primary">
-								<i class="icon-lock icon-white"></i>Sign up
-							</button>
-							<span id="registration-error"class="error hidden"></span>
-					</form>
-				</div>
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse"
+					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span>
+				</a> <a class="brand" href="/"><img
+					src="https://boostaa.s3.amazonaws.com/icons/boostaa_trans_270.png"
+					alt="Boostaa Logo" style="max-height: 70px;"></a>
 			</div>
-			<div class="center join_section">
-				Already have an account? <a href="/login">Log in</a>
-			</div>
-
 		</div>
 	</div>
+
+	<div class="container">
+
+		<div id="login-wraper">
+			<div class="body">
+				<form accept-charset="UTF-8" action="signup" id="signup-form"
+					method="post">
+					<legend>
+						Sign up to <span class="blue">Boostaa</span>
+					</legend>
+					<div class="registration-internal">
+						<p>
+							<input class="text-input" id="login" name="email" tabindex="1"
+								type="email" value="" required placeholder="Email" />
+						</p>
+						<p>
+							<input type="password" class="span3" name="password" required
+								minlength="3" placeholder="Password" />
+						</p>
+						<p>
+							<div class="control-group">
+								<label class="control-label">I am :</label>
+								<div class="btn-group" data-toggle="buttons">
+									<label class="btn btn-primary"> <input type="radio"
+										value="0" name="role" id="role_business"> Business </label> <label
+										class="btn btn-primary"> <input type="radio"
+										name="role" id="role_promoter" value="1"> Promoter </label> <label
+										class="btn btn-primary"> <input type="radio"
+										name="role" id="role_both" value="2"> Both </label>
+								</div>
+							</div>
+						</p>
+						<p>
+							<button type="submit" class="btn btn-primary">Sign up</button>
+						</p>
+
+					</div></div>
+			<span id="registration-error" class="error hidden"></span>
+			</form>
+		</div>
+
+	</div>
+
+	<footer class="white navbar-fixed-bottom"> Already have an
+	account? <a href="login" class="btn btn-black">Login</a> </footer>
+
+</body>
 </html>
 <script
 	src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript"
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 <script src="/js/jquery.form.js"></script>
 <script src="/js/boostaa.js"></script>
-

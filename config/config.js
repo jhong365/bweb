@@ -2,7 +2,7 @@ var development = {
 	mode : 'local',
 	port : 3000,
 	sbp : {
-		host : 'http://localhost:8080/bservice/api/',
+		host : 'http://localhost:8080/sbp/api/',
 	},
 	facebook : {
 		clientID : "clientID",

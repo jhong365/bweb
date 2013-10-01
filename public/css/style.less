@@ -1,3 +1,6 @@
+@import "bootstrap/bootstrap.less";
+@import "variables.less";
+
 body {
    font: 13px "Lucida Grande", Helvetica, Arial, sans-serif;
    padding-top: 70px;
@@ -88,7 +91,269 @@ color: #fff;
 	background-color:#28B6E8;
 }
 
-@import "bootstrap/bootstrap.less";
-@import "variables.less";
+/*login page*/
+.navbar .navbar-inner {
+height: 80px;
+background: white;
+filter: none;
+}
+#login-wraper {
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  border-radius: 15px;
+  position: absolute;
+  left: 50%;
+  display: block;
+  margin-left: -235px;
+  padding: 25px;
+  width: 420px;
+  height: 320px;
+  background: white;
+  text-align: center;
+}
+
+#signup-wraper {
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  border-radius: 15px;
+  position: absolute;
+  left: 50%;
+  display: block;
+  margin-left: -235px;
+  padding: 25px;
+  width: 550px;
+  height: 320px;
+  background: white;
+  text-align: center;
+}
+
+input.span3, textarea.span3, .uneditable-input.span3 {
+width: 256px;
+}
+
+.login-form legend {
+  margin-top: 5px;
+  margin-bottom: 30px;
+  padding-bottom: 25px;
+}
+
+.login-form .body {
+  padding-bottom: 30px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.login-form .footer {
+  margin-top: 20px;
+}
+
+.login-form .footer .checkbox.inline {
+  display: inline;
+}
+
+.login-form .footer .checkbox.inline input[type="checkbox"] {
+  float: none;
+  margin-top: -4px;
+}
+
+.login-form .footer .btn {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  margin-left: 15px;
+  padding: 7px 25px;
+  background-image: none;
+}
+
+footer.navbar-fixed-bottom {
+  font-size: 16px;
+  font-family: "PT Sans", Arial, Helvetica, sans-serif;
+  line-height: 18px;
+  font-weight: 400;
+}
+footer.white {
+padding-top: 20px;
+height: 50px;
+background: white;
+text-align: center;
+}
+.btn-black:hover {
+background: #333333;
+color: white;
+}
+.btn-black {
+-webkit-box-shadow: none;
+-moz-box-shadow: none;
+box-shadow: none;
+padding: 5px 20px;
+background-color: #222222;
+background-image: none;
+color: white;
+text-shadow: none;
+}
+.login-form legend {
+font-family: 'Lato', Helvetica, sans-serif;
+font-size: 36px;
+font-weight: 300;
+color: #333333;
+-webkit-font-smoothing: subpixel-antialiased;
+}
+.login-form label {
+font-family: 'Lato', Helvetica, sans-serif;
+font-size: 20px;
+color: #333333;
+font-weight: 300;
+}
+.social_logins {
+width: 90%;
+margin: 0 auto;
+text-align: center;
+
+line-height: 1;
+}
+.social_logins .g-button {
+white-space: nowrap;
+width: 30%;
+display: inline-block;
+margin: 5px 1% 5px 1%;
+padding: 5px 0;
+min-width: 200px;
+}
+
+.registration-internal
+{
+padding:0px 40px;
+float:left;
+}
+
+.registration-internal input
+{
+	width:90%;
+}
+.profile-overview
+{
+	margin-top:30px;
+	max-width:400px;
+	text-align:justify;
+}
+
+/* Removes the default 20px margin and creates some padding space for the indicators and controls */
+.dashboard .carousel {
+	margin-bottom: 0;
+	padding: 0 40px 30px 40px;
+}
+/* Reposition the controls slightly */
+.dashboard .carousel-control {
+	background:#fff;
+	width:5%;
+}
+.dashboard .carousel-control.right {
+	
+}
+/* Changes the position of the indicators */
+.dashboard .carousel-indicators {
+	right: 50%;
+	top: auto;
+	bottom: 0px;
+	margin-right: -19px;
+}
+/* Changes the colour of the indicators */
+.dashboard .carousel-indicators li {
+	background: #c0c0c0;
+}
+.dashboard .carousel-indicators .active {
+background: #333333;
+}
+
+.blue-spacer
+{
+margin-top:30px;
+border-top: 2px solid #00AEEF;
+}
+.spacer
+{
+margin-top:30px;
+}
+
+.dashboard .dropdown-menu
+{
+display:block;
+border:0px;
+
+box-shadow:none;
+width:100%;
+}
+.dashboard .col-sm-7 .btn-group 
+{
+	width:100%;
+}
+.multiselect-container {
+  position: absolute;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.bip-list
+{
+  margin-top:20px;
+  height:150px;
+}
+
+.common-btn
+{
+width:100px;
+}
+.bip-list .dropdown-menu
+{
+
+  overflow-x: hidden; 
+  overflow-y: scroll;
+  height:100px;
 
 
+}
+.multiselect-container .input-group {
+  margin: 5px;
+}
+.multiselect-container > li {
+  padding: 0;
+}
+.multiselect-container > li > a.multiselect-all label {
+  font-weight: bold;
+}
+.multiselect-container > li > label.multiselect-group {
+  margin: 0;
+  padding: 3px 20px 3px 20px;
+  height: 100%;
+}
+.multiselect-container > li > a > label {
+  margin: 0;
+  height: 100%;
+  cursor: pointer;
+  font-weight: normal;
+}
+.multiselect-container > li > a > label.radio,
+.multiselect-container > li > a > label.checkbox {
+  margin: 0;
+}
+.multiselect-container > li > a > label > input[type="checkbox"] {
+  margin-bottom: 5px;
+}
+.btn-group > .btn-group:nth-child(2) > .multiselect.btn {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.bottom-spacer
+{
+margin-bottom: 10px;
+}
+
+.btn-common
+{
+	width:100px;
+}

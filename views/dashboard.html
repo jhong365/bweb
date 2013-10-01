@@ -1,0 +1,196 @@
+<% include header.html %>
+
+<div class="container dashboard">
+	<div class="row">
+		<div class="col-xs-12 col-sm-2">
+			<%{ var imgUrl = 'https://s3-us-west-2.amazonaws.com/boostaa/icons/test_avatar.png'
+			if(userdetail.profile){
+				imgUrl = userdetail.profile.avatar;
+			}%>
+			<img src="<%=imgUrl%>" alt="avator"
+				style="width: 200px; height: 200px;">
+				<%}%>
+		</div>
+		<div class="col-xs-12 col-sm-6">
+			<div class="profile-overview">
+				<blockquote>
+					<p><%=userdetail.profile ? userdetail.profile.name : 'YOUR NAME'%></p>
+				</blockquote>
+				<p><%=userdetail.profile ? userdetail.profile.description : 'YOUR INTRODUCTION'%></p>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-3">
+			<div class="profile-overview">
+				<p class="lead">Tags:</p>
+				<%=userdetail.profile ? userdetail.profile.tags : 'undefined'%>
+			</div>
+		</div>
+	</div>
+
+
+<% if(userdetail.tasks && userdetail.tasks.length > 0) { %>
+<div class="row blue-spacer">
+	<h4>Coolest Promo</h4>
+	<% if(userdetail.tasks.length <= 4 ){ %>
+	<!--  we can simply display them as is -->
+	<div class="row-fluid">
+		<%for(var i = 0; i < userdetail.tasks.length; i++) { %>
+		<div class="col-sm-3">
+			<a href="#x" class="thumbnail"><img
+				src="http://placehold.it/250x250" alt="Image"
+				style="max-width: 100%;" /></a>
+		</div>
+		<%}%>
+	</div>
+	<%} else { var slides = Math.ceil(userdetail.tasks.length / 4) %>
+	<!-- cool project carousel -->
+	<div id="cool-project-carousel" class="carousel slide">
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+			<%for(var i = 0; i < slides; i++) {%>
+			<li data-target="#cool-project-carousel" data-slide-to="<%=i%>"
+				class="<%=(i==0?'active':'')%>"></li> <%}%>
+		</ol>
+		<div class="carousel-inner">
+			<%for(var i = 0; i < slides; i++) { 
+			var divClass = i == 0 ? 'item active' : 'item';%>
+			<div class="<%=divClass%>">
+				<div class="row-fluid">
+					<%for(var j = i*4;j < (i+1) * 4 && j < userdetail.tasks.length;
+					j++) { var task =userdetail.tasks[j]; 
+					var imgUrl = task.photos && task.photos.length >0 ? task.photos[0].url : '' %>
+					<div class="col-sm-3">
+						<a href="#x" class="thumbnail"><img src="<%=imgUrl%>"
+							alt="Image" style="max-width: 100%;" /></a>
+					</div>
+					<%}%>
+
+				</div>
+				<!--/row-fluid-->
+			</div>
+			<%}%>
+		</div>
+		<!-- Controls -->
+		<a class="left carousel-control" href="#cool-project-carousel"
+			data-slide="prev"> <span class="icon-prev"></span>
+		</a> <a class="right carousel-control" href="#cool-project-carousel"
+			data-slide="next"> <span class="icon-next"></span>
+		</a>
+
+	</div>
+
+	<%}%>
+</div>
+
+<%}%> 
+
+
+
+<% if(userdetail.tasks && userdetail.tasks.length > 0) { %>
+<div class="row">
+	<h4>History</h4>
+	<% if(userdetail.tasks.length <= 4 ){ %>
+	<!--  we can simply display them as is -->
+	<div class="row-fluid">
+		<%for(var i = 0; i < userdetail.tasks.length; i++) { %>
+		<div class="col-sm-3">
+			<a href="#x" class="thumbnail"><img
+				src="http://placehold.it/250x250" alt="Image"
+				style="max-width: 100%;" /></a>
+		</div>
+		<%}%>
+	</div>
+	<%} else { var slides = Math.ceil(userdetail.tasks.length / 4) %>
+	<!-- cool project carousel -->
+	<div id="history-carousel" class="carousel slide">
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+			<%for(var i = 0; i < slides; i++) {%>
+			<li data-target="#cool-project-carousel" data-slide-to="<%=i%>"
+				class="<%=(i==0?'active':'')%>"></li> <%}%>
+		</ol>
+		<div class="carousel-inner">
+			<%for(var i = 0; i < slides; i++) { 
+			var divClass = i == 0 ? 'item active' : 'item';%>
+			<div class="<%=divClass%>">
+				<div class="row-fluid">
+					<%for(var j = i*4;j < (i+1) * 4 && j < userdetail.tasks.length;
+					j++) { var task =userdetail.tasks[j]; 
+					var imgUrl = task.photos && task.photos.length >0 ? task.photos[0].url : '' %>
+					<div class="col-sm-3">
+						<a href="#x" class="thumbnail"><img src="<%=imgUrl%>"
+							alt="Image" style="max-width: 100%;" /></a>
+					</div>
+					<%}%>
+
+				</div>
+				<!--/row-fluid-->
+			</div>
+			<%}%>
+		</div>
+		<!-- Controls -->
+		<a class="left carousel-control" href="#history-carousel"
+			data-slide="prev"> <span class="icon-prev"></span>
+		</a> <a class="right carousel-control" href="#history-carousel"
+			data-slide="next"> <span class="icon-next"></span>
+		</a>
+
+	</div>
+
+	<%}%>
+</div>
+<%if(userdetail.bips && userdetail.bips.length>0) {%>
+ <div class="row blue-spacer ">
+ 	<div class="row-fluid">
+<div class="input-group btn-group col-sm-7 bip-list">
+  <select class="multiselect" multiple="multiple">
+  <%for(var i = 0; i < userdetail.bips.length; i++) {
+  var bip = userdetail.bips[i];%>
+    <option value="<%=bip.id%>"><%=bip.description%>   $<%=bip.price%></option>
+    <%}%>
+  </select>
+</div>
+<div class="col-sm-5 bip-list">
+<div class="btn-group btn-group-vertical"style="position:absolute;bottom:0px;">
+  <button type="button" class="btn btn-default orange btn-common bottom-spacer">Messges</button>
+  <button type="button" class="btn btn-default blue btn-common">Order Now</button>
+
+</div>
+
+</div>
+
+
+
+</div>
+</div>
+<%}%>
+<%}%> 
+
+
+<% include footer.html %>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.multiselect').multiselect({
+      buttonClass: 'btn btn-default',
+      buttonWidth: 'auto',
+      buttonContainer: '<div class="btn-group" />',
+      maxHeight: false,
+      buttonText: function(options) {
+        if (options.length == 0) {
+          return 'None selected';
+        }
+        else if (options.length > 3) {
+          return options.length + ' selected ';
+        }
+        else {
+          var selected = '';
+          options.each(function() {
+            selected += $(this).text() + ', ';
+          });
+          return selected.substr(0, selected.length -2) + ' ';
+        }
+      }
+    });
+  });
+</script>
