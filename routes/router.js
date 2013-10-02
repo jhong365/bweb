@@ -36,6 +36,7 @@ module.exports = function(app,passport) {
 	  	});
 
 	app.get('/profile', profile.profile);
+	app.post('/profile', profile.post);
 	
 	app.get('/project/new', ensureAuthenticated, project.create);
 	app.get('/project/:id', project.get);
