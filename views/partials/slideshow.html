@@ -1,0 +1,56 @@
+
+<% if(items && items.length > 0) { %>
+<div class="row blue-spacer">
+	<h4><%=headline%></h4>
+	<% if(items.length <= size ){ %>
+	<!--  we can simply display them as is -->
+	<div class="row-fluid">
+		<%for(var i = 0; i < items.length; i++) { %>
+		<div class="col-sm-3">
+			<a href="#x" class="thumbnail"><img
+				src="http://placehold.it/250x250" alt="Image"
+				style="max-width: 100%;" /></a>
+		</div>
+		<%}%>
+	</div>
+	<%} else { var slides = Math.ceil(userdetail.tasks.length / size) %>
+	<!-- cool project carousel -->
+	<div id="<%=slideId%>" class="carousel slide">
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+			<%for(var i = 0; i < slides; i++) {%>
+			<li data-target="#cool-project-carousel" data-slide-to="<%=i%>"
+				class="<%=(i==0?'active':'')%>"></li> <%}%>
+		</ol>
+		<div class="carousel-inner">
+			<%for(var i = 0; i < slides; i++) { 
+			var divClass = i == 0 ? 'item active' : 'item';%>
+			<div class="<%=divClass%>">
+				<div class="row-fluid">
+					<%for(var j = i*size;j < (i+1) * size && j < items.length;
+					j++) { var item =items[j]; 
+					var imgUrl = item.photos && item.photos.length >0 ? item.photos[0].url : '' %>
+					<div class="col-sm-3">
+						<a href="#x" class="thumbnail"><img src="<%=imgUrl%>"
+							alt="Image" style="max-width: 100%;" /></a>
+					</div>
+					<%}%>
+
+				</div>
+				<!--/row-fluid-->
+			</div>
+			<%}%>
+		</div>
+		<!-- Controls -->
+		<a class="left carousel-control" href="#<%=slideId%>"
+			data-slide="prev"> <span class="icon-prev"></span>
+		</a> <a class="right carousel-control" href="#<%=slideId%>"
+			data-slide="next"> <span class="icon-next"></span>
+		</a>
+
+	</div>
+
+	<%}%>
+</div>
+</div>
+<%}%> 
