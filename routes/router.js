@@ -27,9 +27,12 @@ module.exports = function(app,passport) {
 	app.get('/registration', user.register);
 
 	// dashboad
-	app.get('/dashboard', user.dashboard);
+	app.get('/dashboard',ensureAuthenticated, user.dashboard);
 	app.post('/signup', user.addNewAccount);
-
+	app.post('/bip/create', ensureAuthenticated, user.createBip);
+	app.post('/bip/edit', ensureAuthenticated, user.editBip);
+	app.post('/bip/delete', ensureAuthenticated, user.deleteBip);
+	
 	app.post("/login", passport.authenticate('local', {failureRedirect : "/login"}),
 		function(req, res) {
 	    	res.redirect(req.body.redirect);

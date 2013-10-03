@@ -139,16 +139,13 @@
 
 	<%}%>
 </div>
-<%if(userdetail.bips && userdetail.bips.length>0) {%>
+
+<%}%> 
  <div class="row blue-spacer ">
  	<div class="row-fluid">
 <div class="input-group btn-group col-sm-7 bip-list">
-  <select class="multiselect" multiple="multiple">
-  <%for(var i = 0; i < userdetail.bips.length; i++) {
-  var bip = userdetail.bips[i];%>
-    <option value="<%=bip.id%>"><%=bip.description%>   $<%=bip.price%></option>
-    <%}%>
-  </select>
+    <table id="list"></table>
+    <div id="pager"></div>
 </div>
 <div class="col-sm-5 bip-list">
 <div class="btn-group btn-group-vertical"style="position:absolute;bottom:0px;">
@@ -163,13 +160,126 @@
 
 </div>
 </div>
-<%}%>
-<%}%> 
 
 
 <% include footer.html %>
 
+  <script type="text/javascript">
+    //<![CDATA[
+        $(document).ready(function () {
+            var lastSel,
+                grid=$("#list"),
+                myAddOptions = {                   
+            		url: "bip/create",
+                },
+                myDelOptions = {
+            	url:'/bip/delete',
+            	 serializeDelData: function(postdata) {
+            	        return postdata;
+            	    }
+                };
+
+            grid.jqGrid({
+                datatype: 'local',
+                data:  <%-JSON.stringify(userdetail.bips)%>,
+                colNames: ['BipId','Description',  'Price', 'Action'],
+				editurl: '/bip/edit',
+                colModel:[
+{ name: 'id', index: 'id',  key:true ,editable: false, hidden: true},
+                          {name: 'description', index: 'description', editable: true, width:300, editrules: {required: true}},
+      					{name: 'price', index: 'price', width: 70, formatter: 'number', editable: true, align: 'right'},
+                    {name:'act',index:'act',width:55,align:'center',sortable:false,formatter:'actions',
+                     formatoptions:{
+                         keys: true, // we want use [Enter] key to save the row and [Esc] to cancel editing.
+                       
+                         onSuccess:function(jqXHR) {
+                             // the function will be used as "succesfunc" parameter of editRow function
+                             // (see http://www.trirand.com/jqgridwiki/doku.php?id=wiki:inline_editing#editrow)
+                             /*alert("in onSuccess used only for remote editing:"+
+                                   "\nresponseText="+jqXHR.responseText+
+                                   "\n\nWe can verify the server response and return false in case of"+
+                                   " error response. return true confirm that the response is successful");*/
+                             // we can verify the server response and interpret it do as an error
+                             // in the case we should return false. In the case onError will be called
+                             return true;
+                         },
+                         onError:function(rowid, jqXHR, textStatus) {
+                             // the function will be used as "errorfunc" parameter of editRow function
+                             // (see http://www.trirand.com/jqgridwiki/doku.php?id=wiki:inline_editing#editrow)
+                             // and saveRow function
+                             // (see http://www.trirand.com/jqgridwiki/doku.php?id=wiki:inline_editing#saverow)
+                             /*alert("in onError used only for remote editing:"+
+                                   "\nresponseText="+jqXHR.responseText+
+                                   "\nstatus="+jqXHR.status+
+                                   "\nstatusText"+jqXHR.statusText+
+                                   "\n\nWe don't need return anything");*/
+                         },
+                         afterSave:function(rowid) {
+                        	//alert("in afterSave (Submit): rowid="+rowid+"\nWe don't need return anything");
+                         },
+                         afterRestore:function(rowid) {
+                             //alert("in afterRestore (Cancel): rowid="+rowid+"\nWe don't need return anything");
+                         },
+                         delOptions: myDelOptions
+                     }},
+              
+                ],
+                rowNum:10,
+                rowList:[5,10,20],
+                pager: '#pager',
+                gridview:true,
+                rownumbers:false,
+                overlay: false,
+                ignoreCase:true,
+                sortname: 'invdate',
+                viewrecords: false,
+                pgbuttons: false,     // disable page control like next, back button
+                pgtext: null,         // disable pager text like 'Page 0 of 10'
+                serializeRowData: function (postData) {
+                    if (postData != null && postData.oper) {
+                    	if(postData.oper == 'add')
+                    		{delete postData.id}
+                    	delete postData.oper;
+                    }
+                    
+                    return postData;
+                },
+                afterInsertRow:  function (rowId, rowData, rowElement) {
+                    // alert('afterInsertRow');
+                },
+                sortorder: "desc",
+                caption:"",
+                height: "100%",
+                onSelectRow: function(id) {
+                    if (id && id !== lastSel) {
+                        // cancel editing of the previous selected row if it was in editing state.
+                        // jqGrid hold intern savedRow array inside of jqGrid object,
+                        // so it is safe to call restoreRow method with any id parameter
+                        // if jqGrid not in editing state
+                        if (typeof lastSel !== "undefined") {
+                            grid.jqGrid('restoreRow',lastSel);
+                        }
+                        lastSel = id;
+                    }
+                }
+            }).jqGrid('navGrid','#pager',{
+            	add:false,
+            	edit:false,
+            	refresh:false,
+            	save:false
+            	},
+            	{},
+            	{},
+            	myDelOptions,{multipleSearch:true,overlay:false});
+            $("#list").jqGrid("inlineNav", "#pager", {addParams: {position: "last",   addRowParams: myAddOptions}});
+        });
+    //]]>
+    </script>
+
+ 
+
 <script type="text/javascript">
+
   $(document).ready(function() {
     $('.multiselect').multiselect({
       buttonClass: 'btn btn-default',
