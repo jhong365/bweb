@@ -208,19 +208,22 @@ color: #333333;
 font-weight: 300;
 }
 .social_logins {
-width: 90%;
+
 margin: 0 auto;
 text-align: center;
 
 line-height: 1;
 }
+
+.login-form
+{
+margin:10px 0px;
+}
 .social_logins .g-button {
 white-space: nowrap;
-width: 30%;
 display: inline-block;
-margin: 5px 1% 5px 1%;
-padding: 5px 0;
-min-width: 200px;
+margin-left:5px;
+margin-right:5px;
 }
 
 .registration-internal
@@ -228,7 +231,10 @@ min-width: 200px;
 padding:0px 40px;
 float:left;
 }
-
+.social_login_text
+{
+margin:10px 5px;
+}
 .registration-internal input
 {
 	width:90%;
@@ -239,7 +245,11 @@ float:left;
 	max-width:400px;
 	text-align:justify;
 }
-
+.dashboard
+{
+padding-left:60px;
+padding-right:60px;
+}
 /* Removes the default 20px margin and creates some padding space for the indicators and controls */
 .dashboard .carousel {
 	margin-bottom: 0;
@@ -356,4 +366,75 @@ margin-bottom: 10px;
 .btn-common
 {
 	width:100px;
+}
+div.ui-jqgrid-view table.ui-jqgrid-btable
+{
+    border-style:none;
+    border-top-style:none;
+    border-collapse:separate;
+}
+div.ui-jqgrid-view table.ui-jqgrid-btable td
+{
+    border-left-style:none
+}
+div.ui-jqgrid-view table.ui-jqgrid-htable
+{
+    border-style:none;
+    border-top-style:none;
+    border-collapse:separate;
+}
+div.ui-jqgrid-view table.ui-jqgrid-btable th
+{
+    border-left-style:none
+}
+  .ui-jqgrid tr.ui-row-ltr td { border-right-color: transparent; }
+        .ui-jqgrid tr.ui-row-ltr td { border-bottom-color: transparent; }
+        /*.ui-jqgrid { border-width: 0px; }*/
+        .ui-jqgrid { border-right-width: 0px; border-left-width: 0px; }
+        th.ui-th-column { border-right-color: transparent !important }
+.bip-list .ui-jqgrid
+{
+border-width:0;
+} 
+
+.bip-list .ui-jqgrid .ui-jqgrid-hdiv 
+{
+display:none;
+}
+.bip-list #pager
+{
+
+}
+#search_list, #refresh_list,#list_iledit,#del_list,#pager_center,.ui-state-disabled
+{
+display:none;
+}
+.ui-icon-save {
+background-position: -96px -112px;
+}
+.bip-list .ui-jqgrid .ui-jqgrid-pager
+{
+border-width:0;
+}
+#pager
+{
+	width:auto!important;
+}
+
+.social_logins .twitter-button
+{
+background:url(https://s3-us-west-2.amazonaws.com/boostaa/icons/twitter_signin.png)
+}
+
+.social_logins .facebook-button
+{
+background:url(https://s3-us-west-2.amazonaws.com/boostaa/icons/fb_signin.png)
+}
+
+.g-button
+{
+display:block;
+width:162px;
+height:29px;
+background-repeat:no-repeat;
 }
