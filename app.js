@@ -4,6 +4,7 @@
  */
 
 var express = require('express');
+var orm = require('orm');
 
 var routes = require('./routes');
 
@@ -28,6 +29,7 @@ app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(express.cookieParser('your secret here'));
 app.use(express.session());
+
 // !!!!Sequence important. Need to call express.session before passport.session
 app.use(passport.initialize());
 app.use(passport.session()); 

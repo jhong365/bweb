@@ -1,5 +1,7 @@
 var request = require('request');
 var qs = require('querystring');
+var Project = require('../models/project');
+var ProjectPhoto = require('../models/project_photo');
 
 var config = require('../config/config').Config;
 var s3 = require('../util/s3');
@@ -17,6 +19,7 @@ exports.create = function(req, res){
 exports.post = function(req, resp){
 	
 	var data = {};
+	data["account_id"] = req.body.accountId;
 	data["title"] = req.body.title;
 	data["description"] = req.body.description;
 	data["tags"] = req.body.tags;
@@ -35,11 +38,21 @@ exports.post = function(req, resp){
 		if(photos[i].name){
 			var s3key = new Date().getTime() + photos[i].name;
 			s3.upload(s3key, photos[i].path);
-			data["photos"].push({"url" : s3.baseUrl + s3key});
+			data["photos"].push(new ProjectPhoto({"url" : s3.baseUrl + s3key}));
 		}
 	}
 
 	console.log(data);
+	
+	Project.create(data, function(err, item){
+		if(err){
+			console.log(err);
+		} else {
+			console.log(item);
+			resp.redirect("/project/" + item.id);
+		}
+	});
+/*
 	request({
 		url : config.sbp.host + 'project',
 		method : 'POST',
@@ -53,6 +66,7 @@ exports.post = function(req, resp){
 			resp.redirect("/project/" + res.body);
 		}
 	});
+*/
  };
  
 exports.get = function(req, resp){
@@ -66,6 +80,22 @@ exports.get = function(req, resp){
 			data.user = null;
 		}
 		
+		Project.get(req.params.id, function(err, project) {
+			if (!err) {
+				data['project'] = project;
+				console.log(project.getPhotos());
+				data['userName'] = "abc";
+				data['userAvatar'] = "/img/noimg.jpg";
+			} else {
+				console.log(err);
+				data['project'] = {};
+			}
+			
+			render(data, resp);
+		});
+};
+		
+/*
 		request({
 			url : config.sbp.host + "comp/project/" + req.params.id,
 			method : 'GET'
@@ -82,6 +112,13 @@ exports.get = function(req, resp){
 			console.log(data);
 			resp.render('project', data);
 		});
+};
+*/
+
+var render = function(data, resp) {
+	if (data.project && data.userName) {
+		resp.render('project', data);
+	}
 };
 	
 	

@@ -9,6 +9,8 @@
     "express": "3.3.5",
     "request": "2.27.0",
     "ejs": "*",
+    "orm": "2.1.2",
+    "mysql" : "2.0.0-alpha9",
     "less-middleware": "*",
 	"passport": "0.1.17",
 	"passport-local": "0.1.6",	
