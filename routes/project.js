@@ -18,60 +18,48 @@ exports.create = function(req, res){
  
 exports.post = function(req, resp){
 	
-	var data = {};
-	data["account_id"] = req.body.accountId;
-	data["title"] = req.body.title;
-	data["description"] = req.body.description;
-	data["tags"] = req.body.tags;
-	data["bidNum"] = req.body.bidNum;
-	data["bidDays"] = req.body.presentDays;
-	data["isPayCash"] = req.body.isPayCash == 1;
+	var project = {};
+	project["account_id"] = req.body.accountId;
+	project["title"] = req.body.title;
+	project["description"] = req.body.description;
+	project["tags"] = req.body.tags;
+	project["bidNum"] = req.body.bidNum;
+	project["bidDays"] = req.body.bidDays;
+	project["isPayCash"] = req.body.isPayCash == 1;
 	
-	data["cashAmount"] = req.body.cashAmount? req.body.cashAmount : 0;
-	data["photos"] = [];
-	
-	console.log(data);
-	
-	var photos = req.files.photos;
-	
-	for(var i in photos){
-		if(photos[i].name){
-			var s3key = new Date().getTime() + photos[i].name;
-			s3.upload(s3key, photos[i].path);
-			data["photos"].push(new ProjectPhoto({"url" : s3.baseUrl + s3key}));
-		}
-	}
+	project["cashAmount"] = req.body.cashAmount? req.body.cashAmount : 0;
 
-	console.log(data);
-	
-	Project.create(data, function(err, item){
+	Project.create(project, function(err, item){
 		if(err){
 			console.log(err);
 		} else {
-			console.log(item);
-			resp.redirect("/project/" + item.id);
+			var photos = req.files.photos;
+			var projectPhotos = [];
+			for(var i in photos){
+				if(photos[i].name){
+					var s3key = new Date().getTime() + photos[i].name;
+					s3.upload(s3key, photos[i].path);
+					projectPhotos.push({"url" : s3.baseUrl + s3key, "project_id" : item.id});
+				}
+			}
+			
+			if(projectPhotos.length > 1){
+				ProjectPhoto.create(projectPhotos, function(err){
+					if(err){
+						console.log(err);
+					} else {
+						resp.redirect("/project/" + item.id);
+					}
+				}); 
+			}else{
+				resp.redirect("/project/" + item.id);
+			}
 		}
 	});
-/*
-	request({
-		url : config.sbp.host + 'project',
-		method : 'POST',
-		headers : {'accountId' : req.body.accountId},
-		json: data
-	}, function(err, res) {
-		if(err){
-			console.log(err);
-		} else {
-			console.log(res.body);
-			resp.redirect("/project/" + res.body);
-		}
-	});
-*/
+
  };
  
 exports.get = function(req, resp){
-		console.log("Id: " + req.params.id);
-		
 		var data = {};
 		
 		if (req.isAuthenticated()) {
@@ -81,14 +69,13 @@ exports.get = function(req, resp){
 		}
 		
 		Project.get(req.params.id, function(err, project) {
-			if (!err) {
-				data['project'] = project;
-				console.log(project.getPhotos());
-				data['userName'] = "abc";
-				data['userAvatar'] = "/img/noimg.jpg";
-			} else {
+			if (err) {
 				console.log(err);
 				data['project'] = {};
+			} else {
+				data['project'] = project;
+				data['userName'] = "abc";
+				data['userAvatar'] = "/img/noimg.jpg";
 			}
 			
 			render(data, resp);

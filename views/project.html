@@ -49,10 +49,11 @@ function bidIt(){
 			</div>
 		</div>
 		<div class="spacer"></div>
-		<% for(var i = 0; i < project.photos.length ; i++){ %>
+		<%  var photos = project.photos;
+			for(var i = 0; i < photos.length ; i++){ %>
 			<div class="row">
 				<div class="col-md-11 thumbnail" style="border:0px;">
-					<img src="<%= project.photos[i].url%>">
+					<img src="<%= photos[i].url%>">
 				</div>
 			</div>
 		<% } %>

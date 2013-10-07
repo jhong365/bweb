@@ -12,9 +12,11 @@ var Project = db.define('project',{
 	bidNum      : { type: "number", rational: false, size: 1},
 	isPayCash   : { type: "boolean"},
 	cashAmount  : { type: "number" }
-});
+}, {autoFetch : true});
 
-Project.hasOne("account", Account, { required: true , autoFetch : true});
+Project.hasOne("account", Account, { required: true});
+// Project.hasMany("accounts", Account);
+// Project.hasMany("photos", ProjectPhoto);
 ProjectPhoto.hasOne("project", Project, { reverse: "photos", required: true , autoFetch : true});
 
 module.exports = Project;

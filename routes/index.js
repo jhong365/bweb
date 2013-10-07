@@ -1,10 +1,9 @@
 var config = require('../config/config').Config;
-var loginUrl = config.sbp.host + 'account/login';
 var request = require('request');
+var Project = require('../models/project');
 
 exports.index = function(req, resp) {
 	var getUserUrl = config.sbp.host + 'account/list';
-	var getGigUrl = config.sbp.host + 'project/list?size=36';
 
 	var data = {};
 
@@ -25,15 +24,13 @@ exports.index = function(req, resp) {
 		}
 		render(data, resp);
 	});
-
-	request({
-		url : getGigUrl,
-		method : 'GET'
-	}, function(err, res, body) {
-		if (!err && res.statusCode == 200) {
-			data['gigs'] = JSON.parse(body);
-		} else {
+	
+	Project.all(function(err, projects){
+		if(err){
+			console.log(err);
 			data['gigs'] = {};
+		} else {
+			data['gigs'] = projects;
 		}
 		render(data, resp);
 	});
