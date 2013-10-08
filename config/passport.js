@@ -11,27 +11,8 @@ module.exports = function(passport, config) {
 	});
 
 	passport.deserializeUser(function(id, done) {
-		var getUserUrl = config.sbp.host + 'account/email';
-
-		var parameter = queryString.stringify({
-			email : id
-		});
-
-		request({
-			url : getUserUrl,
-			headers : common.default_headers,
-			method : 'POST',
-			body : parameter
-
-		}, function(err, res, body) {
-			if (!err && res.statusCode == 200) {
-				// successfully get the account, now verify the password
-				var account = JSON.parse(body);
-				done(null, account);
-			} else {
-				done(err);
-			}
-		});
+		var User = require('./database').model('account');
+		User.get(id, done);
 	});
 
 	passport.use(new LocalStrategy({

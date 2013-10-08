@@ -4,6 +4,18 @@ var development = {
 	sbp : {
 		host : 'http://localhost:8080/bservice/api/',
 	},
+	database : {
+			database : "boostaa-test",
+			protocol : "mysql",
+			host : "127.0.0.1",
+			port : 3306,
+			username : "root",
+			password : "summer1999@",
+			query : {
+				pool : true
+			}
+		},
+		
 	facebook : {
 		clientID : "clientID",
 		clientSecret : "clientSecret",
@@ -17,6 +29,18 @@ var production = {
 		host : 'http://boostaa.elasticbeanstalk.com/api/',
 		port : 80
 	},
+	database : {
+		database : "boostaa-test",
+		protocol : "mysql",
+		host : "127.0.0.1",
+		port : 3306,
+		username : "root",
+		password : "summer1999@",
+		query : {
+			pool : true
+		}
+	},
+	connectionString: "mysql://root:summer1999@@localhost/boostaa-test",
 	facebook : {
 		clientID : "clientID",
 		clientSecret : "clientSecret",

@@ -12,10 +12,17 @@ var http = require('http');
 var path = require('path');
 var passport = require("passport");
 var config = require('./config/config').Config;
-require('./config/passport')(passport, config);
+
 
 var app = express();
+console.log('start connection to database...');
 
+var defineModels = require('./config/database').define;
+app.use(orm.express(config.database, { define: defineModels }));
+
+//app.use(require('./config/database')(orm,config));
+
+require('./config/passport')(passport, config);
 app.engine('.html', require('ejs').__express);
 
 // all environments
