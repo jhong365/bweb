@@ -1,5 +1,5 @@
-module.exports = function(db, models, next) {
-	models.project = db.define('project', {
+module.exports = function(db) {
+	return db.define('project', {
 		title : {
 			type : "text",
 			size : 255,
@@ -30,6 +30,4 @@ module.exports = function(db, models, next) {
 			type : "number"
 		}
 	});
-
-	return next();
 };

@@ -1,6 +1,7 @@
 var config = require('../config/config').Config;
 var request = require('request');
-var Project = require('../models/project');
+var models = require('../models');
+var Project = models.Project;
 
 exports.index = function(req, resp) {
 	var getUserUrl = config.sbp.host + 'account/list';
@@ -34,7 +35,6 @@ exports.index = function(req, resp) {
 		}
 		render(data, resp);
 	});
-
 };
 
 var render = function(data, resp) {

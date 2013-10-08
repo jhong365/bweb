@@ -4,8 +4,6 @@
  */
 
 var express = require('express');
-var orm = require('orm');
-
 var routes = require('./routes');
 
 var http = require('http');
@@ -15,12 +13,6 @@ var config = require('./config/config').Config;
 
 
 var app = express();
-console.log('start connection to database...');
-
-var defineModels = require('./config/database').define;
-app.use(orm.express(config.database, { define: defineModels }));
-
-//app.use(require('./config/database')(orm,config));
 
 require('./config/passport')(passport, config);
 app.engine('.html', require('ejs').__express);

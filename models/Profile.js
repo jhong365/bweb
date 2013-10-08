@@ -1,5 +1,5 @@
-module.exports = function(db, models, next) {
-	models.profile = db.define("profile", {
+module.exports = function(db) {
+	return db.define("profile", {
 		avatar : String,
 		balance : String,
 		fbId : String,

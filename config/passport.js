@@ -1,9 +1,9 @@
-var LocalStrategy = require('passport-local').Strategy, 
-FacebookStrategy = require('passport-facebook').Strategy;
+var LocalStrategy = require('passport-local').Strategy, FacebookStrategy = require('passport-facebook').Strategy;
 var crypto = require('crypto');
 var request = require('request');
 var queryString = require('querystring');
 var common = require('./common');
+var Account = require("../models").Account;
 
 module.exports = function(passport, config) {
 	passport.serializeUser(function(user, done) {
@@ -11,32 +11,20 @@ module.exports = function(passport, config) {
 	});
 
 	passport.deserializeUser(function(id, done) {
-		var User = require('./database').model('account');
-		User.get(id, done);
+		Account.findByEmail(id, function(err, user) {
+			done(err, user);
+		});
 	});
 
 	passport.use(new LocalStrategy({
 		usernameField : 'email',
 		passwordField : 'password'
 	}, function(username, password, done) {
-		var getUserUrl = config.sbp.host + 'account/email';
-
-		var parameter = queryString.stringify({
-			email : username
-		});
-
-		request({
-			url : getUserUrl,
-			headers : common.default_headers,
-			method : 'POST',
-			body : parameter
-
-		}, function(err, res, body) {
-			if (!err && res.statusCode == 200) {
+		Account.findByEmail(username, function(err, account) {
+			if (!err && account) {
 				// successfully get the account, now verify the password
-				var account = JSON.parse(body);
-				console.log(account);
-				common.validatePassword(password, account.password, function(err, res) {
+				common.validatePassword(password, account.password, function(
+						err, res) {
 					console.log(res);
 					if (res) {
 						done(null, account);
@@ -59,5 +47,3 @@ module.exports = function(passport, config) {
 		// User.findOrCreateFaceBookUser(profile, done);
 	}));
 };
-
-

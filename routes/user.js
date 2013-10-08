@@ -5,6 +5,7 @@ var bipCrudUrl = config.sbp.host + 'bip/';
 queryString = require('querystring');
 var request = require('request');
 var passport = require("passport");
+var Account = require("../models").Account;
 require('../config/passport')(passport, config);
 
 /*
@@ -35,7 +36,7 @@ exports.register = function(req, res) {
  */
 exports.dashboard = function(req, res) {
 	var data = {};
-	
+
 	data.user = req.user;
 	console.log(req.user);
 	var getUserCompositeUrl = config.sbp.host + 'comp/user/' + req.user.id;
@@ -49,12 +50,11 @@ exports.dashboard = function(req, res) {
 		} else {
 			data['userdetail'] = {};
 		}
-		
-		if(data.userdetail.bips == null)
-			{
+
+		if (data.userdetail.bips == null) {
 			data.userdetail.bips = [];
-			}
-		console.log(data.userdetail.bips);
+		}
+		console.log(data.userdetail);
 		res.render('dashboard', data);
 	});
 };
@@ -72,27 +72,20 @@ exports.addNewAccount = function(req, res) {
 		pass = hash;
 	});
 
-	var parameter = queryString.stringify({
-		email : email,
-		password : pass,
-		role : role,
-		isNew : true,
-	});
-
-	console.log(loginUrl);
-	request({
-		url : loginUrl,
-		headers : common.default_headers,
-		method : 'POST',
-		body : parameter
-
-	}, function(err, resp, body) {
-		console.log('status code:');
-		console.log(resp.statusCode);
-		console.log(body);
-		if (!err && resp.statusCode == 200) {
-			var user = JSON.parse(body);
-			if (user) {
+	console.log(req.models);
+	Account.exists({
+		email : email
+	}, function(err, exists) {
+		if (exists) {
+			res.send('email-taken', 400);
+		} else {
+			Account.create({
+				email : email,
+				password : pass,
+				role : role
+			}, function(err, user) {
+				// err - description of the error or null
+				// items - array of inserted items
 				req.login(user, function(err) {
 					if (err) {
 						console.log(err);
@@ -100,14 +93,10 @@ exports.addNewAccount = function(req, res) {
 					}
 					return res.redirect('/');
 				});
-			}
-		} else {
-			// body contains the error code
-			res.send(body, 400);
+			});
 		}
 	});
 };
-
 
 /*
  * Bips operation
@@ -118,11 +107,13 @@ exports.createBip = function(req, res) {
 		url : bipCrudUrl,
 		headers : common.default_headers,
 		method : 'POST',
-		headers : {'accountId' : req.user.id},
+		headers : {
+			'accountId' : req.user.id
+		},
 		json : req.body
 
 	}, function(err, resp, body) {
-		res.send(err,resp.statusCode);
+		res.send(err, resp.statusCode);
 	});
 };
 
@@ -132,13 +123,13 @@ exports.editBip = function(req, res) {
 		url : bipCrudUrl,
 		headers : common.default_headers,
 		method : 'PUT',
-		json: req.body
+		json : req.body
 
 	}, function(err, resp, body) {
 		console.log('status code:');
 		console.log(resp.statusCode);
 		console.log(body);
-		res.send(err,resp.statusCode);
+		res.send(err, resp.statusCode);
 	});
 };
 
@@ -155,7 +146,7 @@ exports.deleteBip = function(req, res) {
 		console.log(resp.statusCode);
 		console.log(body);
 		if (!err && resp.statusCode == 200) {
-			res.send(body,200);
+			res.send(body, 200);
 		} else {
 			// body contains the error code
 			res.send(body, 400);
