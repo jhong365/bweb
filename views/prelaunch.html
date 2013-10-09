@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Welcome to Boostaa.com</title>
+
+
+<!-- Custom styles for this template -->
+<link href="/css/prelaunch.css" rel="stylesheet">
+<script type="text/javascript" src="/js/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+function login(){
+	$.ajax({
+		url: "/",
+		data: {
+			"email": $("#email").val()
+		},
+		type: 'POST',
+	    success: function(response){
+	    	$("#signup").css("display", "none");
+	    	$("#signupResponse").css("display", "block");
+		},
+		error: function(response) {
+			// do nothing
+			// alert(response.responseText);
+		}
+	});
+}
+</script>
+</head>
+
+<body>
+<div class="header">The VIP hiring board for business hire social influencers!</div>
+    
+<div class="LR-box-wrapper" style="margin-left: auto; margin-right: auto;">	
+	<div class="LR-box" style="background-color: rgba(0, 0, 0, 0.85098); background-position: initial initial; background-repeat: initial initial;">
+		<div class="LR-box-container LR-clearfix">
+			<div class="LR-box-inner">
+				<div class="LR-site-logo"><img src="/img/logo.png"></div>
+				<div id="signup" class="LR-sign-up">
+					<h2 class="LR-site-tagline montserrat">Where brands meet stars</h2>
+					<div class="LR-site-description">If you are a social influencer and would love the idea of being an official spokesperson for your favorite business or brand, <br><br>
+Sign up now!</div><!-- .site-description -->
+					<div class="LR-sign-up-container" style="height:50px;" >
+						<div class="LR-sign-up-container-inner LR-clearfix">
+							<input type="email" id="email" class="LR-sign-up-input signup-email" placeholder="e-mail address">
+							<input type="text" class="LR-sign-up-input first-name half" placeholder="first name" style="display: none;">
+							<input type="text" class="LR-sign-up-input last-name half" placeholder="last name" style="display: none;">
+							<input type="text" class="LR-sign-up-input company" placeholder="company" style="display: none;">
+							<input type="tel" class="LR-sign-up-input phone-number half" placeholder="phone number" style="display: none;">
+							<input type="text" class="LR-sign-up-input zipcode half" placeholder="zipcode" style="display: none;">
+							<input type="text" class="LR-sign-up-input birthdate half" placeholder="birthdate mm/dd/yy" style="display: none;">
+							<input type="submit" name="submit" onclick="javascript:login();" title="GO" value="GO"  class="LR-sign-up-submit">
+						</div><!-- .sign-up-container-inner -->
+					</div><!-- .sign-up-container -->
+				</div><!-- .sign-up -->
+				<div id="signupResponse" class="LR-sign-up" style="display:none;">
+					<h2 class="LR-site-tagline montserrat">Thank you!</h2>
+				</div>		
+			</div><!-- .box-inner -->	
+
+			<div class="LR-site-share" style="height:50px;">
+				<!--
+				<div class="LR-site-share-container">
+					<div class="LR-site-share-inner" style="display:none;">
+						<div class="LR-site-social-share">
+							<ul class="LR-clearfix">
+								<li class="LR-share-facebook-like"> <iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fsuperboostaa&amp;width=450&amp;height=21&amp;colorscheme=light&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;send=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:21px;" allowTransparency="true"></iframe></li>
+								<li class="LR-share-tweet"><iframe allowtransparency="true" frameborder="0" scrolling="no" src="http://platform.twitter.com/widgets/tweet_button.1378258117.html#_=1378531125272&amp;count=none&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http%3A%2F%2Fsignup.boostaa.com%2F&amp;size=m&amp;text=Come%20to%20join%20us%20to%20be%20influencers%3A%20http%3A%2F%2Fwww.boostaa.com%20&amp;url=http%3A%2F%2Flnc.hr%2Ff32tG" class="twitter-share-button twitter-count-none" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 56px; height: 20px;"></iframe></li>
+							</ul>
+						</div>
+		    		</div>
+				</div><!-- .site-share-container -->	
+				<div class="LR-site-connect">
+					<span class="LR-share-label">Find us on:</span>
+					<ul class="LR-connect-share-links LR-clearfix">
+						<li><a href="https://www.facebook.com/superboostaa" class="LR-connect-icon connect-facebook" title="facebook"></a></li>
+						<li><a href="https://twitter.com/SuperBoostaa" class="LR-connect-icon connect-twitter" title="twitter"></a></li>
+						<li><a href="http://www.pinterest.com/boostaa/" class="LR-connect-icon connect-pinterest" title="pinterest"></a></li>
+						<li><a href="#" class="LR-connect-icon connect-blog" title="blog" style="display: none;"></a></li>
+						<li><a href="#" class="LR-connect-icon connect-tumblr" title="tumblr" style="display: none;"></a></li>
+						<li><a href="#" class="LR-connect-icon connect-instagram" title="instagram" style="display: none;"></a></li>
+						<li><a href="#" class="LR-connect-icon connect-vimeo" title="vimeo" style="display: none;"></a></li>
+						<li><a href="#" class="LR-connect-icon connect-youtube" title="youtube" style="display: none;"></a></li>
+						<li><a href="#" class="LR-connect-icon connect-github" title="github" style="display: none;"></a></li>
+						<li><a href="#" class="LR-connect-icon connect-rss" title="rss" style="display: none;"></a></li>			
+					</ul>
+				</div><!-- .site-connect -->
+			</div><!-- .site-share -->	
+		</div><!-- .box-container -->
+	</div>
+</div>
+
+</body>
+</html>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-44712638-1', 'boostaa.com');
+  ga('send', 'pageview');
+
+</script>

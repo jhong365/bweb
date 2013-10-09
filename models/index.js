@@ -14,7 +14,7 @@ var db = orm.connect(config.database, function(err, db) {
 });
 
 // load models
-var models = [ 'Account', 'Profile', 'Project', 'ProjectPhoto' ];
+var models = [ 'Account', 'Profile', 'Project', 'ProjectPhoto', 'RegisterEmail' ];
 models.forEach(function(model) {
 	var modelPath = __dirname + '/' + model;
 	module.exports[model] = require(modelPath)(db);

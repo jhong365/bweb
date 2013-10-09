@@ -1,11 +1,16 @@
 var user = require('./user');
 var home = require('./index');
+var prelaunch = require('./prelaunch');
 var profile = require('./profile');
 var project = require('./project');
 var qs = require('querystring');
 
 module.exports = function(app,passport) {
-	app.get('/', home.index);
+	//prelaunch email register
+	app.get('/', prelaunch.get);
+	app.post('/', prelaunch.post);
+	
+	app.get('/home', home.index);
 	app.get('/users', user.list);
 	app.get("/login", function(req, res){ 
 		console.log(req.query);
@@ -21,7 +26,7 @@ module.exports = function(app,passport) {
 	  req.logout();
 	  res.redirect('/');
 	});
-
+	
 	// signup with social plugin
 	app.get('/signup', user.signup);
 	app.get('/registration', user.register);

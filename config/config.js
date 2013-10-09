@@ -5,12 +5,12 @@ var development = {
 		host : 'http://localhost:8080/bservice/api/',
 	},
 	database : {
-			database : "boostaa-test",
+			database : "sbpdb",
 			protocol : "mysql",
 			host : "127.0.0.1",
 			port : 3306,
 			username : "root",
-			password : "summer1999@",
+			password : "",
 			query : {
 				pool : true
 			}

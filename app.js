@@ -40,8 +40,6 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-
-app.get('/', routes.index);
 require('./routes/router')(app,passport);
 
 http.createServer(app).listen(app.get('port'), function(){
